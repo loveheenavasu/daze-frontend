@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import dynamic from "next/dynamic";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 // import { Container } from "../components/Defaults";
 import { nFormatter } from "../../utils";
 import Router from "next/router";
@@ -9,8 +9,10 @@ import Layout from "../Layout";
 import Slider from "../Slider/sliderTalent";
 import gsap from "gsap";
 import translations from "./locale";
-
 import getConfig from "next/config";
+import PlayButton from "./components/PlayButton";
+import PlayButtonDeskTop from "./components/PlayButtonDesktop";
+import CreationsPlay from "./components/CreationsPlay";
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
 // const Layout = dynamic(() => import("../Layout"), { ssr: false });
@@ -136,7 +138,14 @@ const TalentInfos = styled.div`
   }
   .button-wrapper {
     position: relative;
+    margin: 10px;
+    padding-left: 2rem;
     right: 0;
+    @media (max-width: 960px) {
+      padding: 0;
+      align-self: center;
+      margin-top: 28px;
+    }
   }
   .infos {
     width: 100%;
@@ -152,6 +161,9 @@ const TalentInfos = styled.div`
           color: #000;
           margin: 0;
           text-decoration: none;
+          @media (max-width: 960px) {
+            font-size: calc(3vw + 10px);
+          }
         }
       }
       h2 {
@@ -169,6 +181,9 @@ const TalentInfos = styled.div`
         color: #000;
         margin: 0;
         text-decoration: none;
+        @media (max-width: 960px) {
+          font-size: calc(3vw + 10px);
+        }
       }
     }
   }
@@ -177,7 +192,7 @@ const TalentInfos = styled.div`
     .infos {
       flex-direction: column;
       & > div {
-        flex-direction: column;
+        // flex-direction: column;
         .instagram_id {
           margin-bottom: 35px;
         }
@@ -229,6 +244,7 @@ const BackButton = styled.div`
     transition: transform 0.5s ease;
   }
   @media (max-width: 960px) {
+    display: none;
     top: 20px;
     left: 5%;
     & > #scroll-button-bg {
@@ -241,11 +257,21 @@ const PortfolioSlide = styled.div`
   margin-bottom: 5px;
   height: 690px;
   z-index: 1;
-  /* @media (max-width: 960px) {
-    height: 300px;
-  } */
+  @media (max-width: 960px) {
+    overflow: hidden;
+    height: 100%;
+  }
 `;
 
+const SocielLink = styled.a`
+  color: #000;
+`;
+
+const TalentName = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
 const ClientWrapper = styled.div`
   width: 320px;
   height: 320px;
@@ -306,7 +332,6 @@ const ClientWrapper = styled.div`
     height: 225px;
     margin: 0 5px;
     a  {
-      opacity: 1;
       h4 {
         font-size: 18px;
       }
@@ -314,12 +339,11 @@ const ClientWrapper = styled.div`
     & > div {
       pointer-events: none;
     }
-    &:hover > a {
-      opacity: 1;
-    }
     &:active > a  {
-      opacity: 1;
       pointer-events: auto;
+    }
+    &:hover > a {
+      opacity: 0;
     }
   }
 `;
@@ -338,7 +362,6 @@ const Creations = styled.div`
 
 const Button = styled.div`
   display: inline-block;
-  margin-bottom: 50px;
   border: 1px solid #000;
   align-self: center;
   background-color: #fff;
@@ -360,32 +383,74 @@ const Button = styled.div`
       /* transform: scale(1.05); */
     }
   }
+`;
+
+const MobileCrause = styled.div`
+  display: none;
   @media (max-width: 960px) {
-    margin: 50px 0;
+    height: 50vh;
+    display: flex;
+  }
+`;
+
+const DestopWrapper = styled.div`
+  display: flex;
+  @media (max-width: 960px) {
+    display: none;
+  }
+`;
+const MobileWrapper = styled.div`
+  display: none !important;
+  @media (max-width: 960px) {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+`;
+
+const Name = styled.h1`
+  @media (max-width: 960px) {
+    margin-top: -10px;
+  }
+`;
+
+const SocialHandles = styled.div`
+  display: flex;
+  flex-wrap: no-wrap;
+  @media (max-width: 960px) {
   }
 `;
 
 const Client = ({ client, lang }) => {
+  console.log(client, "CLIENTTTTTT");
   return (
     <ClientWrapper
       style={{
+        overflow: "hidden",
+        zIndex: 0,
         backgroundImage: `url(${publicRuntimeConfig.API_URL}${
           client.img && client.img.url
         })`,
       }}
     >
-      <center>
-        <a href={client.instagram_link} target="__blank">
-          <h4>
-            <span>{client.name.split(" x ")[0]}</span>
-            <span>x</span>
-            <span>{client.name.split(" x ")[1]}</span>
-          </h4>
-          <div className="overlay-instagram-pic">
-            {translations[lang].view_on_insta}
-          </div>
-        </a>
-      </center>
+      {client.img.mime === "video/mp4" ? (
+        <center style={{ alignItems: "center", zIndex: 1 }}>
+          <CreationsPlay item={client.img} />
+        </center>
+      ) : (
+        <center>
+          <a href={client.instagram_link} target="__blank">
+            <h4>
+              <span>{client.name.split(" x ")[0]}</span>
+              <span>x</span>
+              <span>{client.name.split(" x ")[1]}</span>
+            </h4>
+            <div className="overlay-instagram-pic">
+              {translations[lang].view_on_insta}
+            </div>
+          </a>
+        </center>
+      )}
     </ClientWrapper>
   );
 };
@@ -394,9 +459,25 @@ const Talent = ({ talent, lang }) => {
   // const [isDown, setIsDown] = useState(false)
   // const [startX, setStartX] = useState(0)
   // let router = useRouter();
+  const [videoUrl, setVideoUrl] = useState("");
+  const [playButton, setPlayButton] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+  const videoRef = useRef(null);
   let isDown = false;
   let startX;
   let scrollLeft;
+
+  function playPause() {
+    if (videoRef.current.paused) {
+      videoRef.current.play();
+      setPlayButton(false);
+      // video.play();
+    } else {
+      // video.pause();
+      videoRef.current.pause();
+      setPlayButton(true);
+    }
+  }
 
   const handleMouseDown = (e) => {
     let PortfolioWrapper = document.getElementById("portfolio-wrapper");
@@ -417,27 +498,50 @@ const Talent = ({ talent, lang }) => {
   };
   return (
     <Wrapper>
+      <MobileCrause>
+        <Slider
+          left={{ desktop: "0", mobile: "0" }}
+          sliderName="slider-talent-profile-mobile"
+        >
+          {talent.portfolio.map((item) => (
+            <PortfolioSlide>
+              {item?.mime === "video/mp4" ? (
+                <div
+                  style={{
+                    position: "relative",
+                    height: "50vh",
+                    overflow: "hidden",
+                    width: "60%",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  <PlayButton item={item} />
+                </div>
+              ) : (
+                <img
+                  style={{
+                    // width: "100vw",
+                    height: "50vh",
+                  }}
+                  src={`${publicRuntimeConfig.API_URL}${item.url}`}
+                  alt=""
+                />
+              )}
+            </PortfolioSlide>
+          ))}
+        </Slider>
+      </MobileCrause>
       <TalentInfos>
         <BackButton onClick={() => history.back()}>
           {/* <div id="scroll-button-bg"></div> */}
           <img src="/assets/svg/arrowScrollTop.svg" alt="" />
         </BackButton>
-        <h1>{talent.firstname + " " + talent.lastname}</h1>
-        <div className="infos">
-          <div>
-            <div className="instagram_id">
-              <h2>instagram</h2>
-              <a
-                target="__blank"
-                href={`https://www.instagram.com/${talent.instagram_id}`}
-              >{`@${talent.instagram_id}`}</a>
-            </div>
-            <div className="followers">
-              <h2>followers</h2>
-              <p>{nFormatter(talent.followers, 1)}</p>
-            </div>
-          </div>
-          <div className="button-wrapper">
+        <TalentName>
+          <Name className="talent-name">
+            {talent.firstname + " " + talent.lastname}
+          </Name>
+          <DestopWrapper>
             <Button>
               <Link
                 href={{
@@ -455,27 +559,109 @@ const Talent = ({ talent, lang }) => {
                 </a>
               </Link>
             </Button>
+          </DestopWrapper>
+        </TalentName>
+        <div className="infos">
+          <SocialHandles>
+            <div className="instagram_id">
+              <h2>instagram</h2>
+              <a
+                target="__blank"
+                href={`https://www.instagram.com/${talent.instagram_id}`}
+              >{`@${talent.instagram_id}`}</a>
+              <p>{nFormatter(talent.followers, 1)}</p>
+              <p>ER: {talent?.instragram_ER}%</p>
+            </div>
+            <div className="followers">
+              <h2>Tiktok</h2>
+              <p>
+                <SocielLink
+                  target="__blank"
+                  href={`https://www.instagram.com/${talent?.tiktok_id}`}
+                >{`@${talent?.tiktok_id}`}</SocielLink>
+              </p>
+              <p>{nFormatter(talent.tiktok_followers, 1)}</p>
+              <p>ER: {talent?.tiktok_ER}%</p>
+            </div>
+          </SocialHandles>
+          <MobileWrapper>
+            <Button>
+              <Link
+                href={{
+                  pathname: "/contact",
+                  query: {
+                    subject: `Media Kit - ${talent.firstname} ${talent.lastname}`,
+                  },
+                }}
+                // as="/contact"
+              >
+                <a
+                // href={`mailto:contact@daze-mgmt.com?subject=Request media kit for ${talent.firstname} ${talent.lastname}`}
+                >
+                  {translations[lang].media_kit}
+                </a>
+              </Link>
+            </Button>
+          </MobileWrapper>
+
+          <div className="button-wrapper">
+            {talent.description}
+            {/* <Button>
+              <Link
+                href={{
+                  pathname: "/contact",
+                  query: {
+                    subject: `Media Kit - ${talent.firstname} ${talent.lastname}`,
+                  },
+                }}
+                // as="/contact"
+              >
+                <a
+                // href={`mailto:contact@daze-mgmt.com?subject=Request media kit for ${talent.firstname} ${talent.lastname}`}
+                >
+                  {translations[lang].media_kit}
+                </a>
+              </Link>
+            </Button> */}
           </div>
         </div>
       </TalentInfos>
-      <Slider
-        left={{ desktop: "0", mobile: "0" }}
-        sliderName="slider-talent-profile"
-      >
-        {talent.portfolio.map((item) => (
-          <PortfolioSlide>
-            <img
-              style={{
-                width: "auto",
-                height: "100%",
-                display: "block",
-              }}
-              src={`${publicRuntimeConfig.API_URL}${item.url}`}
-              alt=""
-            />
-          </PortfolioSlide>
-        ))}
-      </Slider>
+      <DestopWrapper>
+        <Slider
+          left={{ desktop: "0", mobile: "0" }}
+          sliderName="slider-talent-profile"
+        >
+          {talent.portfolio.map((item) => (
+            <PortfolioSlide>
+              {item.mime === "video/mp4" ? (
+                <div
+                  style={{
+                    position: "relative",
+                    height: "100%",
+                    overflow: "hidden",
+                    width: "40%",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  <PlayButtonDeskTop item={item} />
+                </div>
+              ) : (
+                <img
+                  style={{
+                    width: "auto",
+                    height: "100%",
+                    display: "block",
+                  }}
+                  src={`${publicRuntimeConfig.API_URL}${item.url}`}
+                  alt=""
+                />
+              )}
+            </PortfolioSlide>
+          ))}
+        </Slider>
+      </DestopWrapper>
+
       {/* {talent.portfolio.length !== 0 && (
           <PortfolioWrapper
             id="portfolio-wrapper"
@@ -504,7 +690,7 @@ const Talent = ({ talent, lang }) => {
         )} */}
       {talent.creations.reverse().length !== 0 && (
         <Creations>
-          <h3>last creations</h3>
+          <h3>last creations with Daze</h3>
           <Slider
             left={{ desktop: "10%", mobile: "0" }}
             sliderName="slide-client"
@@ -515,7 +701,7 @@ const Talent = ({ talent, lang }) => {
           </Slider>
         </Creations>
       )}
-      {talent.instagram_last_pics.length !== 0 && (
+      {/* {talent.instagram_last_pics.length !== 0 && (
         <div className="sliderWrapper">
           <h3>
             <a
@@ -551,7 +737,7 @@ const Talent = ({ talent, lang }) => {
               ))}
           </div>
         </div>
-      )}
+      )} */}
     </Wrapper>
   );
 };

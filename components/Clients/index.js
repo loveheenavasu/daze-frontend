@@ -289,7 +289,7 @@ const TabsButton = styled.div`
       text-align: center;
       color: #000000;
       background: none;
-      margin-left:90px;
+      // margin-left:90px;
       cursor:pointer;
       width: 286px;
       height: 45px;

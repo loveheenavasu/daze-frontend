@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="21px" viewBox="0 0 20 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Icon</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Contact" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Contact-Talent---Desktop" transform="translate(-614.000000, -2261.000000)">
+            <g id="Footer" transform="translate(0.000000, 2014.000000)">
+                <g id="Icon" transform="translate(615.000000, 248.500000)">
+                    <rect id="Camera-Frame" stroke="#959595" stroke-width="1.78158488" x="0" y="0" width="17.8645833" height="17.9824219" rx="4.63212068"></rect>
+                    <ellipse id="Oval-1" stroke="#959595" stroke-width="1.78158488" cx="8.95833333" cy="9.0703125" rx="4.27083333" ry="4.32421875"></ellipse>
+                    <ellipse id="Oval-2" fill="#959595" cx="14.1927083" cy="3.69140625" rx="1.25" ry="1.265625"></ellipse>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

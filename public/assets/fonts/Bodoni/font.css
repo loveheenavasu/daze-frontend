@@ -1,0 +1,36 @@
+@font-face {
+  font-family: "Bodoni-Bold";
+  src: url("BodoniSvtyTwoITCTT-Bold.eot");
+  src: url("BodoniSvtyTwoITCTT-Bold.eot?#iefix") format("embedded-opentype"),
+    url("BodoniSvtyTwoITCTT-Bold.svg#BodoniSvtyTwoITCTT-Bold") format("svg"),
+    url("BodoniSvtyTwoITCTT-Bold.ttf") format("truetype"),
+    url("BodoniSvtyTwoITCTT-Bold.woff") format("woff"),
+    url("BodoniSvtyTwoITCTT-Bold.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Bodoni-Book";
+  src: url("BodoniSvtyTwoITCTT-Book.eot");
+  src: url("BodoniSvtyTwoITCTT-Book.eot?#iefix") format("embedded-opentype"),
+    url("BodoniSvtyTwoITCTT-Book.svg#BodoniSvtyTwoITCTT-Book") format("svg"),
+    url("BodoniSvtyTwoITCTT-Book.ttf") format("truetype"),
+    url("BodoniSvtyTwoITCTT-Book.woff") format("woff"),
+    url("BodoniSvtyTwoITCTT-Book.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Bodoni-BookIta";
+  src: url("BodoniSvtyTwoITCTT-BookIta.eot");
+  src: url("BodoniSvtyTwoITCTT-BookIta.eot?#iefix") format("embedded-opentype"),
+    url("BodoniSvtyTwoITCTT-BookIta.svg#BodoniSvtyTwoITCTT-BookIta")
+      format("svg"),
+    url("BodoniSvtyTwoITCTT-BookIta.ttf") format("truetype"),
+    url("BodoniSvtyTwoITCTT-BookIta.woff") format("woff"),
+    url("BodoniSvtyTwoITCTT-BookIta.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}

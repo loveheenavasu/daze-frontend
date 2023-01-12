@@ -1,0 +1,22 @@
+@import url("/assets/fonts/SackersGothicStd-Heavy/font.css");
+@import url("/assets/fonts/Bodoni/font.css");
+@import url("/assets/fonts/Miller-Banner/font.css");
+@import url("/assets/fonts/Avenir-Next/font.css");
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: normal;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  overflow-x: hidden;
+
+  /* scroll-behavior: smooth; */
+}
+/* 
+html {
+  scrollbar-width: none;
+} */

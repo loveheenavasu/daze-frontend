@@ -1,0 +1,38 @@
+{
+  "name": "daze-mgmt",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "dotenv": "^8.2.0",
+    "fuse.js": "^3.6.1",
+    "graphql": "^14.5.8",
+    "graphql-tag": "^2.10.1",
+    "gsap": "^3.0.5",
+    "isomorphic-fetch": "^2.2.1",
+    "isomorphic-unfetch": "^3.0.0",
+    "lodash": "^4.17.15",
+    "lottie-web": "^5.6.2",
+    "next": "latest",
+    "next-transpile-modules": "^4.1.0",
+    "next-i18next": "^4.1.0",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
+    "react-is": "^16.8.0",
+    "react-form": "^4.0.1",
+    "react-lazyload": "^2.6.5",
+    "react-markdown": "^4.3.1",
+    "react-parallax": "^3.0.3",
+    "recompose": "^0.30.0",
+    "styled-components": "^5.0.0",
+    "webpack": "^5.28.0"
+  },
+  "devDependencies": {
+    "babel-plugin-styled-components": "^1.12.0"
+  }
+}

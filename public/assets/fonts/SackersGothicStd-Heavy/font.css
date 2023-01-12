@@ -1,0 +1,11 @@
+@font-face {
+  font-family: "SackersGothicStd-Heavy";
+  src: url("SackersGothicStd-Heavy.eot");
+  src: url("SackersGothicStd-Heavy.eot?#iefix") format("embedded-opentype"),
+    url("SackersGothicStd-Heavy.svg#SackersGothicStd-Heavy") format("svg"),
+    url("SackersGothicStd-Heavy.ttf") format("truetype"),
+    url("SackersGothicStd-Heavy.woff") format("woff"),
+    url("SackersGothicStd-Heavy.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}

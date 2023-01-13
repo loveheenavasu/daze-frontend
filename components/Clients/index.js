@@ -8,6 +8,14 @@ import getConfig from "next/config";
 import { useState } from "react";
 import CustomModal from "./CustomModal";
 import Slider from "../Slider/sliderTalent";
+import { Swiper, SwiperSlide } from "swiper/react";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+
+import { Pagination } from "swiper";
+
+
 
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
@@ -15,6 +23,7 @@ const Wrapper = styled.div`
   width: 100%;
   position: relative;
   padding-top: 10px;
+  }
 `;
 
 const ClientWrapper = styled.div`
@@ -24,7 +33,7 @@ const ClientWrapper = styled.div`
   right: 0;
   margin: 0 auto;
   max-width: 960px;
-  min-height: 360px;
+  // min-height: 360px;
   overflow: hidden;
   & > #client-background-img {
     width: 100%;
@@ -95,6 +104,12 @@ const ClientWrapper = styled.div`
     }
     & h1{
       margin-bottom:20px
+    }
+    & #new-custom-slide{
+      display:none;
+    }
+    & .slider-parent{
+      display:none;
     }
   }
 `;
@@ -189,13 +204,6 @@ const CreationWrapper = styled.a`
     width: 100%;
     display: block;
   }
-  // & #res-style{
-  //   display:none;
-  //   @media (max-width: 960px) {
-  //     display:block;
-  //     opacity: 1;
-  //   }
-  // }
   @media (max-width: 960px) {
     width: calc((100vw) / 2);
     height: calc((100vw) / 2);
@@ -301,6 +309,7 @@ const TabsButton = styled.div`
       }
       & select{
         display:block;
+        margin-top:43px;
         font-family: 'Avenir Next';
         font-style: normal;
         font-size: 16px;
@@ -315,6 +324,38 @@ const TabsButton = styled.div`
       }
     }
 `;
+
+const RadioButton = styled.div`
+display:none;
+height:150px;
+  & .mySwiper{
+    display:grid;
+    grid-template-columns: auto auto;
+    padding: 10px;
+    max-width:300px;
+    column-gap: 85px;
+    row-gap: 54px;
+  }
+  & .swiper {
+  width: 100%;
+  height: 100%;
+}  
+  .grid-item {
+    text-align: center;
+    & img{
+      width:100px;
+    }
+  }
+  & .swiper-pagination{
+    .swiper-pagination-bullet-active{
+      background:black;
+    }
+  }
+        @media (max-width: 960px) {
+          display:flex
+          height:150px;
+        }
+  `;
 const Creation = (props) => {
   let { creation, index, lang, setIsOpen, isOpen, setViewClient } = props;
   useEffect(() => {
@@ -374,12 +415,15 @@ const Clients = ({ clients, creations, lang, generalSetting, filterTabs }) => {
   const [viewClient, setViewClient] = useState({})
   const [tabCreation, seTabCreation] = useState(creations)
   const [selectedIndex, setSelectedIndex] = useState('all')
+  const [activeImage, setActiveImage] = React.useState(0);
+  const [position, setPosition] = React.useState(`${activeImage * 100}%`);
 
   const arr = filterTabs.map((tab, index) => {
     return {
       name: tab.name, id: index
     }
   })
+
 
   useEffect(() => {
     let tl = gsap.timeline();
@@ -396,6 +440,26 @@ const Clients = ({ clients, creations, lang, generalSetting, filterTabs }) => {
     });
   }, []);
 
+  const handleClick = (i) => {
+    setActiveImage(i);
+    setPosition(`-${i * 100}%`);
+  };
+
+  const perChunk = 2
+
+  const result = clients.reduce((resultArray, item, index) => {
+    const chunkIndex = Math.floor(index / perChunk)
+
+    if (!resultArray[chunkIndex]) {
+      resultArray[chunkIndex] = []
+    }
+
+    resultArray[chunkIndex].push(item)
+
+    return resultArray
+  }, [])
+
+  console.log(result, 'resultewwewewewe')
   if (clients && creations) {
     return (
       <>
@@ -408,25 +472,46 @@ const Clients = ({ clients, creations, lang, generalSetting, filterTabs }) => {
               <p>
                 {generalSetting?.client_desc_en}
               </p>
-              <Slider
-                left={{ desktop: "0", mobile: "0" }}
-                arrowId='new-arrow-style'
-                sliderName="new-custom-slide"
-              >
-                {clients.map((client) => (
-                  <PortfolioSlide>
-                    <img
-                      src={`${publicRuntimeConfig.API_URL}${client.logo.url}`}
-                      alt=""
-                    />
-                  </PortfolioSlide>
-                ))}
-              </Slider>
+              <div className="slider-parent">
+                <Slider
+                  left={{ desktop: "0", mobile: "0" }}
+                  arrowId='new-arrow-style'
+                  sliderName="new-custom-slide"
+                >
+                  {clients.map((client) => (
+                    <PortfolioSlide>
+                      <img
+                        src={`${publicRuntimeConfig.API_URL}${client.logo.url}`}
+                        alt=""
+                      />
+                    </PortfolioSlide>
+                  ))}
+                </Slider>
+              </div>
               <div>
               </div>
             </div>
           </ClientWrapper>
+          <RadioButton className='container-swiper'>
+            <Swiper
+              pagination={{
+                dynamicBullets: true,
+              }}
+              modules={[Pagination]}
+              className="mySwiper"
+              spaceBetween={50}
+              slidesPerView={2}
+            >
+              {result.map((el) => (
+                <SwiperSlide className="grid-item">
+                  {el.map((client) => (
+                    <img src={`${publicRuntimeConfig.API_URL}${client?.logo?.url}`} />
 
+                  ))}
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </RadioButton>
           <TabsButton>
             <div>
               <select
@@ -465,23 +550,7 @@ const Clients = ({ clients, creations, lang, generalSetting, filterTabs }) => {
             }
           </TabsButton>
 
-          {/* <center>
-          <Button>
-            <Link
-              href={{
-                pathname: "contact",
-                query: {
-                  subject: translations[lang].button_subject,
-                },
-              }}
-            >
-              <a>{translations[lang].case_studies}</a>
-            </Link>
-          </Button>
-        </center> */}
-          {/* <center>
-          <Title>{translations[lang].some_creations}</Title>
-        </center> */}
+
           <CreationsWrapper>
             {shuffle(selectedIndex === 'all' ? creations : tabCreation)
               // .filter((item) => {

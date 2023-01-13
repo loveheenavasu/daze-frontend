@@ -20,14 +20,14 @@ const CustomModal = (props) => {
         display: flex;
         align-items: center;
         flex-direction: row;
-        justify-content:space-between;
+        justify-content:space-around;
         & > div{
             max-width:380px;
         }
         & #new-custom-slidecss{
             &  img{
                 height:100%;  
-                max-height:345px;
+                max-height:400px;
                 width:380px;
             }
         }
@@ -75,6 +75,8 @@ const CustomModal = (props) => {
                 line-height: 22px;
                 text-align: center;
                 color: #000000;
+                max-height: 200px; 
+                overflow: scroll;
               }
               @media (max-width: 960px) {
                 width:100%;

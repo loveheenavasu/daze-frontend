@@ -127,20 +127,21 @@ const PortfolioWrapper = styled.div`
 
 const TalentInfos = styled.div`
   padding: 75px 10%;
-  position: relative;
+  // position: relative;
+  background:#F6F6F6;
 
   h1 {
     font-family: "Bodoni-Book";
     font-size: 35px;
     font-weight: 300;
     color: #000;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
   .button-wrapper {
-    position: relative;
+    // position: relative;
     margin: 10px;
     padding-left: 2rem;
-    right: 0;
+    // right: 0;
     @media (max-width: 960px) {
       padding: 0;
       align-self: center;
@@ -364,7 +365,7 @@ const Button = styled.div`
   display: inline-block;
   border: 1px solid #000;
   align-self: center;
-  background-color: #fff;
+  background-color: #F6F6F6;
   transition: background-color 0.2s ease;
   a  {
     display: inline-block;
@@ -409,6 +410,17 @@ const MobileWrapper = styled.div`
 `;
 
 const Name = styled.h1`
+& span{
+  display:block;
+  font-family: 'Sackers Gothic Std';
+  font-style: normal;
+  font-weight: 850;
+  font-size: 11px;
+  line-height: 13px;
+  color: #000000;
+  margin-bottom:0px;
+  text-transform: uppercase;
+}
   @media (max-width: 960px) {
     margin-top: -10px;
   }
@@ -428,9 +440,8 @@ const Client = ({ client, lang }) => {
       style={{
         overflow: "hidden",
         zIndex: 0,
-        backgroundImage: `url(${publicRuntimeConfig.API_URL}${
-          client.img && client.img.url
-        })`,
+        backgroundImage: `url(${publicRuntimeConfig.API_URL}${client.img && client.img.url
+          })`,
       }}
     >
       {client.img.mime === "video/mp4" ? (
@@ -456,6 +467,7 @@ const Client = ({ client, lang }) => {
 };
 
 const Talent = ({ talent, lang }) => {
+  console.log(talent, 'wewewewewe')
   // const [isDown, setIsDown] = useState(false)
   // const [startX, setStartX] = useState(0)
   // let router = useRouter();
@@ -540,7 +552,11 @@ const Talent = ({ talent, lang }) => {
         <TalentName>
           <Name className="talent-name">
             {talent.firstname + " " + talent.lastname}
+            <span>
+              {talent.talent}
+            </span>
           </Name>
+
           <DestopWrapper>
             <Button>
               <Link
@@ -550,7 +566,7 @@ const Talent = ({ talent, lang }) => {
                     subject: `Media Kit - ${talent.firstname} ${talent.lastname}`,
                   },
                 }}
-                // as="/contact"
+              // as="/contact"
               >
                 <a
                 // href={`mailto:contact@daze-mgmt.com?subject=Request media kit for ${talent.firstname} ${talent.lastname}`}
@@ -561,6 +577,7 @@ const Talent = ({ talent, lang }) => {
             </Button>
           </DestopWrapper>
         </TalentName>
+
         <div className="infos">
           <SocialHandles>
             <div className="instagram_id">
@@ -593,7 +610,7 @@ const Talent = ({ talent, lang }) => {
                     subject: `Media Kit - ${talent.firstname} ${talent.lastname}`,
                   },
                 }}
-                // as="/contact"
+              // as="/contact"
               >
                 <a
                 // href={`mailto:contact@daze-mgmt.com?subject=Request media kit for ${talent.firstname} ${talent.lastname}`}
@@ -604,7 +621,7 @@ const Talent = ({ talent, lang }) => {
             </Button>
           </MobileWrapper>
 
-          <div className="button-wrapper">
+          <p className="button-wrapper">
             {talent.description}
             {/* <Button>
               <Link
@@ -623,7 +640,7 @@ const Talent = ({ talent, lang }) => {
                 </a>
               </Link>
             </Button> */}
-          </div>
+          </p>
         </div>
       </TalentInfos>
       <DestopWrapper>

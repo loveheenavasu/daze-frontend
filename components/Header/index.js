@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Link from "../Link";
 import lottie from "lottie-web";
 import gsap from "gsap";
-import { LinkedinLogo, InstagramLogo } from "../Icons";
+import { LinkedinLogo, InstagramLogo, TwitterLogo } from "../Icons";
 import Select from "../Footer/customSelect";
 
 const Container = styled.div`
@@ -224,6 +224,12 @@ class Header extends Component {
             </div>
             <TranslateWrapper>
               <div>
+                <a
+                  href=""
+                  target="__blank"
+                >
+                  <TwitterLogo />
+                </a>
                 <a
                   href="https://www.linkedin.com/company/daze-mgmt"
                   target="__blank"

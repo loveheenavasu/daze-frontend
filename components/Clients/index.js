@@ -95,7 +95,7 @@ const ClientWrapper = styled.div`
   }
   @media (max-width: 960px) {
     margin-bottom: 0px;
-    height: 44vh;
+    height: 20%;
     width: 90%;
     & img {
       height: auto;
@@ -331,7 +331,7 @@ const TabsButton = styled.div`
     }
     & select {
       display: block;
-      margin-top: 43px;
+      margin-top: 7%;
       font-family: "Avenir Next";
       font-style: normal;
       font-size: 16px;
@@ -365,7 +365,7 @@ const RadioButton = styled.div`
   }
   & .swiper {
     width: 100%;
-    height: 100%;
+    height: 27vh;
   }
   .grid-item {
     text-align: center;
@@ -377,7 +377,7 @@ const RadioButton = styled.div`
     .swiper-slide {
       display: grid;
       width: 125px;
-      height: 30vh;
+      height: 23vh;
     }
   }
   & .swiper-pagination {
@@ -387,7 +387,7 @@ const RadioButton = styled.div`
   }
   @media (max-width: 960px) {
     display: flex;
-    height: 35vh;
+    height: 100%;
   }
   .swaperimage {
     width: 100%;

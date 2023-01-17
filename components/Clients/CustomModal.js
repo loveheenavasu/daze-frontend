@@ -62,6 +62,7 @@ const CustomModal = (props) => {
 
   const ClientDesc = styled.div`
     width: 100%;
+
     margin-right: 20px;
     & h1 {
       font-family: "SVN-Miller Banner";
@@ -86,6 +87,7 @@ const CustomModal = (props) => {
     }
     @media (max-width: 960px) {
       width: 100%;
+      height: 60vh;
     }
   `;
 
@@ -109,7 +111,7 @@ const CustomModal = (props) => {
     z-index: 99;
     @media (max-width: 960px) {
       margin-top: 5rem;
-      height: 82vh;
+      height: 100%;
     }
   `;
 
@@ -131,7 +133,7 @@ const CustomModal = (props) => {
       z-index: 1;
     }
     @media (max-width: 960px) {
-      height: 100%;
+      height: 66vh;
       position: absolute;
       top: 50px;
       max-height: 600px;

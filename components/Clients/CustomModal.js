@@ -84,7 +84,7 @@ const CustomModal = (props) => {
   const ClientDesc = styled.div`
     width: 100%;
 
-    margin-right: 20px;
+    margin-right: 60px;
     & h1 {
       font-family: "SVN-Miller Banner";
       font-style: normal;
@@ -139,7 +139,7 @@ const CustomModal = (props) => {
   `;
 
   const ModalContent = styled.div`
-    min-width: 80%;
+    min-width: 60%;
     min-height: 35%;
     height: 54vh;
     background-color: white;

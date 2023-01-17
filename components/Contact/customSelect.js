@@ -84,7 +84,7 @@ const Error = styled.div`
   color: #ff3f3f;
 `;
 
-const SelectContainer = props => {
+const SelectContainer = (props) => {
   const [field, fieldOptions, { options, ...rest }] = splitFormProps(props);
   const [selectValue, setSelectValue] = useState(options[0]);
   const [selectOpen, setSelectOpen] = useState(false);
@@ -98,10 +98,10 @@ const SelectContainer = props => {
   const {
     value = "",
     setValue,
-    meta: { error, isTouched }
+    meta: { error, isTouched },
   } = useField(field, { ...fieldOptions, validate: validateSelectField });
 
-  const handleSelectChange = e => {
+  const handleSelectChange = (e) => {
     setValue(e.target.value);
   };
 
@@ -109,7 +109,7 @@ const SelectContainer = props => {
     handleOptionsClick(selectValue);
   }, []);
 
-  const handleOptionsClick = option => {
+  const handleOptionsClick = (option) => {
     setSelectValue(option);
     props.setIsBrand(option.value);
     setValue(option.value);
@@ -117,7 +117,7 @@ const SelectContainer = props => {
 
   useEffect(() => {
     var specifiedElement = document.getElementById("custom-select");
-    let clickHandler = event => {
+    let clickHandler = (event) => {
       var isClickInside = specifiedElement.contains(event.target);
       if (!isClickInside) {
         setSelectOpen(false);
@@ -133,7 +133,7 @@ const SelectContainer = props => {
   return (
     <SelectWrapper style={props.style}>
       <Select {...rest} value={selectValue.value} onChange={handleSelectChange}>
-        {options.map(option => (
+        {options.map((option) => (
           <option key={option.text} value={option.value}>
             {option.text}
           </option>
@@ -145,11 +145,11 @@ const SelectContainer = props => {
           style={{ height: selectOpen ? 112 : 55 }}
           id="custom-select"
         >
-          {options.map(option => (
+          {options.map((option) => (
             <div
               style={{
                 pointerEvents: selectOpen ? "auto" : "none",
-                order: selectValue.value === option.value ? 1 : 2
+                order: selectValue.value === option.value ? 1 : 2,
               }}
               onClick={() => handleOptionsClick(option)}
             >

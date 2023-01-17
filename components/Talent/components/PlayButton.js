@@ -3,14 +3,14 @@ import styled from "styled-components";
 import getConfig from "next/config";
 
 const PlayIcon = styled.div`
-position: absolute;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-display: flex;
-justify-content: center;
-align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 function PlayButton({ item }) {
@@ -30,14 +30,13 @@ function PlayButton({ item }) {
     }
   }
 
-
   return (
     <>
       <video
         className="video"
         ref={videoRef}
         style={{
-          height: "50vh",
+          height: "80vh",
         }}
         // autoPlay
         src={`${publicRuntimeConfig.API_URL}${item.url}`}

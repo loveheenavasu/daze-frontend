@@ -29,6 +29,7 @@ const CustomModal = (props) => {
         height: 100%;
         max-height: 400px;
         width: 380px;
+        object-fit: contain;
       }
     }
     & #new-arrow-style {
@@ -42,21 +43,41 @@ const CustomModal = (props) => {
       height: 100%;
       width: 40px !important;
     }
+    @media (min-width: 960px) {
+      .campaignMobile {
+        display: none;
+      }
+    }
     @media (max-width: 960px) {
       width: 90%;
       gap: 20px;
       max-height: 600px;
       position: absolute;
-      top: 58px;
+      top: 30px;
       flex-direction: column;
       & img {
         width: 50px;
         margin: 10px 1px;
       }
+      .campaignName {
+        display: none;
+      }
     }
     .modalbacground {
       top: 5px;
       max-height: 100%;
+    }
+  `;
+  const ClientDescMobile = styled.div`
+    & h1 {
+      font-family: "SVN-Miller Banner";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 37.27px;
+      text-align: center;
+      margin-top: 0px;
+      color: #000000;
+      margin-bottom: 0px;
     }
   `;
 
@@ -87,7 +108,6 @@ const CustomModal = (props) => {
     }
     @media (max-width: 960px) {
       width: 100%;
-      height: 60vh;
     }
   `;
 
@@ -96,6 +116,9 @@ const CustomModal = (props) => {
     /* @media (max-width: 960px) {
             height: 300px;
         } */
+    &img {
+      object-fit: contain;
+    }
   `;
 
   const ModalBackdrop = styled.div`
@@ -181,6 +204,9 @@ const CustomModal = (props) => {
       }}
     >
       <ClientWrapper>
+        <ClientDescMobile>
+          <h1 className=" campaignMobile">{viewClient?.campaign_name}</h1>
+        </ClientDescMobile>
         <Slider
           left={{ desktop: "0", mobile: "0" }}
           sliderName="new-custom-slidecss"
@@ -194,7 +220,7 @@ const CustomModal = (props) => {
           ))}
         </Slider>
         <ClientDesc>
-          <h1>{viewClient?.campaign_name}</h1>
+          <h1 className="campaignName">{viewClient?.campaign_name}</h1>
           <p>{viewClient?.campaign_portfolio_desc}</p>
         </ClientDesc>
       </ClientWrapper>

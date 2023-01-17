@@ -279,9 +279,11 @@ const ResWrapper = styled.div`
     .instagrambtn {
       margin-bottom: 10px;
       margin-top: 5px;
+      cursor: pointer;
     }
     .campaignbtn {
       margin-bottom: 37px;
+      cursor: pointer;
     }
   }
 `;
@@ -302,7 +304,8 @@ const TabsButton = styled.div`
     border: none;
     color: #000000;
     background: none;
-    margin-left: 90px;
+    padding: 1px 77px;
+    // margin-left: 90px;
     cursor: pointer;
   }
   & select {

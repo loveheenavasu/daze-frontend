@@ -150,7 +150,7 @@ const TranslateWrapper = styled.div`
 
 class Header extends Component {
   state = {
-    menuOpen: false
+    menuOpen: false,
   };
   burgerAnim;
   componentDidMount() {
@@ -161,7 +161,7 @@ class Header extends Component {
       container: element, // the dom element that will contain the animation
       renderer: "svg",
       autoplay: false,
-      path: "/assets/lottie/burger_menu.json" // the path to the animation json
+      path: "/assets/lottie/burger_menu.json", // the path to the animation json
     });
     // console.log(this.burgerAnim);
   }
@@ -169,20 +169,22 @@ class Header extends Component {
   toggleMenu = () => {
     this.setState(
       {
-        menuOpen: !this.state.menuOpen
+        menuOpen: !this.state.menuOpen,
       },
       () => {
         if (this.state.menuOpen) {
-          this.burgerAnim.playSegments([0, 26], true);
+          console.log("open");
+          this.burgerAnim.goToAndStop(26, true);
           gsap.to(".linkWrapper", 0.7, {
             x: "-100vw",
-            ease: "Power2.easeOut"
+            ease: "Power2.easeOut",
           });
         } else {
-          this.burgerAnim.playSegments([26, 45], true);
+          console.log("close");
+          this.burgerAnim.goToAndStop(45, true);
           gsap.to(".linkWrapper", 0.7, {
             x: "100vw",
-            ease: "Power1.easeOut"
+            ease: "Power1.easeOut",
           });
         }
       }
@@ -224,10 +226,7 @@ class Header extends Component {
             </div>
             <TranslateWrapper>
               <div>
-                <a
-                  href=""
-                  target="__blank"
-                >
+                <a href="" target="__blank">
                   <TwitterLogo />
                 </a>
                 <a
@@ -247,7 +246,7 @@ class Header extends Component {
                   lang={this.props.lang}
                   options={[
                     { text: "english", value: "en" },
-                    { text: "français", value: "fr" }
+                    { text: "français", value: "fr" },
                   ]}
                 ></Select>
               </SelectWrapper>

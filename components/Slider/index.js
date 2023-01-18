@@ -7,6 +7,7 @@ const Wrapper = styled.div`
   overflow-x: visible;
   position: relative;
   display: flex;
+
   @media (max-width: 960px) {
     overflow-x: scroll;
     &::-webkit-scrollbar {
@@ -118,7 +119,7 @@ const RightArrowWrapper = styled(ArrowWrapper)`
   }
 `;
 
-const Slider = props => {
+const Slider = (props) => {
   let [left, setLeft] = useState(0);
   let [rightArrow, setRightArrow] = useState(true);
   let [leftArrow, setLeftArrow] = useState(false);
@@ -153,7 +154,7 @@ const Slider = props => {
     }
   }, [left]);
 
-  const handleArrowClick = direction => {
+  const handleArrowClick = (direction) => {
     let content = document.getElementById(`${props.sliderName}`);
     let width = content.offsetWidth;
 
@@ -170,7 +171,7 @@ const Slider = props => {
           x: left + toAdd,
           onComplete: () => {
             setLeft(left + toAdd);
-          }
+          },
         });
       }
     } else if (direction === "left") {
@@ -179,7 +180,7 @@ const Slider = props => {
           x: left + toAdd,
           onComplete: () => {
             setLeft(left + toAdd);
-          }
+          },
         });
       }
     }
@@ -188,7 +189,7 @@ const Slider = props => {
   return (
     <Wrapper>
       <Content left={props.left} id={`${props.sliderName}`}>
-        {props.children.map(item => (
+        {props.children.map((item) => (
           <Slide>{item}</Slide>
         ))}
       </Content>
@@ -196,7 +197,7 @@ const Slider = props => {
         style={{
           ...props.arrowStyle,
           opacity: rightArrow ? 1 : 0,
-          pointerEvents: rightArrow ? "auto" : "none"
+          pointerEvents: rightArrow ? "auto" : "none",
         }}
         onClick={() => handleArrowClick("right")}
       >
@@ -206,7 +207,7 @@ const Slider = props => {
         style={{
           ...props.arrowStyle,
           opacity: leftArrow ? 1 : 0,
-          pointerEvents: leftArrow ? "auto" : "none"
+          pointerEvents: leftArrow ? "auto" : "none",
         }}
         onClick={() => handleArrowClick("left")}
       >

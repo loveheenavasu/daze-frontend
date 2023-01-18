@@ -8,6 +8,15 @@ const Wrapper = styled.div`
   position: relative;
   display: flex;
   overflow: ${(theme) => theme?.overflowType};
+
+  @media (max-width: 1440px) {
+    width: 70%;
+    max-width: 100%;
+  }
+  @media (min-width: 1442px) {
+    width: 69%;
+    max-width: 100%;
+  }
   @media (max-width: 960px) {
     overflow-x: scroll;
     &::-webkit-scrollbar {

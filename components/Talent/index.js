@@ -182,6 +182,7 @@ const TalentInfos = styled.div`
         color: #000;
         margin: 0;
         text-decoration: none;
+        text-transform: uppercase;
         @media (max-width: 960px) {
           font-size: calc(3vw + 10px);
         }

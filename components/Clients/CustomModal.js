@@ -4,6 +4,12 @@ import { CloseIcon } from "../Icons";
 import getConfig from "next/config";
 import { shuffle } from "../../utils";
 import Slider from "../Slider/sliderTalent";
+import { Swiper, SwiperSlide } from "swiper/react";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+
+import { Pagination } from "swiper";
 
 const CustomModal = (props) => {
   const { clients, setIsOpen, creations, isOpen, viewClient } = props;
@@ -22,13 +28,11 @@ const CustomModal = (props) => {
     flex-direction: row;
     justify-content: space-around;
     & > div {
-      max-width: 380px;
     }
     & #new-custom-slidecss {
       & img {
         height: 100%;
-        max-height: 400px;
-        width: 380px;
+        width: 100%;
         object-fit: contain;
       }
     }
@@ -43,12 +47,21 @@ const CustomModal = (props) => {
       height: 100%;
       width: 40px !important;
     }
+
+    @media (min-width: 2560px) {
+      width: 100%;
+    }
+    // @media (min-width: 1440px) {
+    //   width: 70%;
+    //   max-width: 100%;
+    // }
     @media (min-width: 960px) {
       .campaignMobile {
         display: none;
       }
     }
     @media (max-width: 960px) {
+      display: none;
       width: 90%;
       gap: 20px;
       max-height: 600px;
@@ -56,8 +69,8 @@ const CustomModal = (props) => {
       top: 30px;
       flex-direction: column;
       & img {
-        width: 50px;
-        margin: 10px 1px;
+        width: 100%;
+        height: 100%;
       }
       .campaignName {
         display: none;
@@ -73,11 +86,13 @@ const CustomModal = (props) => {
       font-family: "SVN-Miller Banner";
       font-style: normal;
       font-weight: 400;
-      font-size: 37.27px;
+      font-size: 20px;
       text-align: center;
       margin-top: 0px;
       color: #000000;
       margin-bottom: 0px;
+    }
+    
     }
   `;
 
@@ -106,18 +121,84 @@ const CustomModal = (props) => {
       max-height: 200px;
       overflow: scroll;
     }
+    @media (min-width: 2560px) {
+      & h1 {
+        font-size: 47.27px;
+      }
+      & p {
+        font-size: 20px;
+      }
+    }
     @media (max-width: 960px) {
       width: 100%;
+      margin-right: 0px;
+      & p {
+        font-size: 14px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
     }
   `;
 
-  const PortfolioSlide = styled.div`
+  const PortfolioSlides = styled.div`
+    width: 395px;
+    height: 329px;
     z-index: 1;
     /* @media (max-width: 960px) {
             height: 300px;
         } */
     &img {
+      width: 100%;
+      heigth: 100%;
       object-fit: contain;
+    }
+    @media (max-width: 960px) {
+      width: 100%;
+      height: 329px;
+      z-index: 1;
+      &img {
+        width: 100%;
+        heigth: 100%;
+        object-fit: contain;
+      }
+    }
+    @media (min-width: 2560px) {
+      width: 636px;
+      height: 529px;
+    }
+    @media (min-width: 960px and max-width: 1440px) {
+      width: 415px;
+    }
+  `;
+
+  const PortfolioSlide = styled.div`
+    width: 395px;
+    height: 329px;
+    z-index: 1;
+    /* @media (max-width: 960px) {
+            height: 300px;
+        } */
+    &img {
+      width: 100%;
+      heigth: 100%;
+      object-fit: contain;
+    }
+    @media (max-width: 960px) {
+      width: 100%;
+      height: 329px;
+      z-index: 1;
+      &img {
+        width: 100%;
+        heigth: 100%;
+        object-fit: contain;
+      }
+    }
+    @media (min-width: 2560px) {
+      width: 636px;
+      height: 529px;
+    }
+    @media (max-width: 1440px) {
+      width: 415px;
     }
   `;
 
@@ -139,11 +220,10 @@ const CustomModal = (props) => {
   `;
 
   const ModalContent = styled.div`
-    min-width: 60%;
+    min-width: 90%;
     min-height: 35%;
     height: 54vh;
     background-color: white;
-    padding: 25px;
     position: relative;
     & button {
       cursor: pointer;
@@ -155,8 +235,12 @@ const CustomModal = (props) => {
       align-self: flex-end;
       z-index: 1;
     }
+    @media (min-width: 2560px) {
+      min-width: 60%;
+    }
     @media (max-width: 960px) {
       height: 66vh;
+      margin: 0px 5px;
       position: absolute;
       top: 50px;
       max-height: 600px;
@@ -204,9 +288,6 @@ const CustomModal = (props) => {
       }}
     >
       <ClientWrapper>
-        <ClientDescMobile>
-          <h1 className=" campaignMobile">{viewClient?.campaign_name}</h1>
-        </ClientDescMobile>
         <Slider
           left={{ desktop: "0", mobile: "0" }}
           sliderName="new-custom-slidecss"
@@ -224,6 +305,36 @@ const CustomModal = (props) => {
           <p>{viewClient?.campaign_portfolio_desc}</p>
         </ClientDesc>
       </ClientWrapper>
+      <div class="swiper-mobile">
+        <ClientDescMobile>
+          <h1 className=" campaignMobile">{viewClient?.campaign_name}</h1>
+        </ClientDescMobile>
+
+        <Swiper
+          pagination={{
+            dynamicBullets: true,
+            clickable: true,
+          }}
+          modules={[Pagination]}
+          slidesPerView={1}
+          className="client-mobile-swiper"
+        >
+          {viewClient?.campaign_portfolio?.map((client) => (
+            <SwiperSlide>
+              <PortfolioSlides>
+                <img
+                  src={`${publicRuntimeConfig.API_URL}${client.url}`}
+                  alt=""
+                />
+              </PortfolioSlides>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        <ClientDesc>
+          {/* <h1 className="campaignName">{viewClient?.campaign_name}</h1> */}
+          <p>{viewClient?.campaign_portfolio_desc}</p>
+        </ClientDesc>
+      </div>
     </Modal>
   );
 };

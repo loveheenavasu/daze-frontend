@@ -30,7 +30,6 @@ const ClientWrapper = styled.div`
   left: 0;
   right: 0;
   margin: 0 auto;
-  height: 48vh;
   max-width: 960px;
   // min-height: 360px;
   overflow: hidden;
@@ -210,6 +209,7 @@ const CreationWrapper = styled.a`
   span {
     width: 100%;
     display: block;
+    text-transform: uppercase;
   }
   @media (max-width: 960px) {
     width: calc((100vw) / 2);
@@ -257,6 +257,7 @@ const ResWrapper = styled.div`
       font-style: normal;
       font-weight: 400;
       font-size: 13px;
+      text-transform: uppercase;
       line-height: 17px;
       text-align: center;
       color: #000000;
@@ -295,6 +296,8 @@ const CreationWrapperContainer = styled.div`
 const TabsButton = styled.div`
   display: flex;
   justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 30px;
   & button {
     font-family: "Avenir Next";
     font-style: normal;
@@ -307,6 +310,7 @@ const TabsButton = styled.div`
     padding: 1px 77px;
     // margin-left: 90px;
     cursor: pointer;
+    text-transform: uppercase;
   }
   & select {
     display: none;
@@ -329,12 +333,15 @@ const TabsButton = styled.div`
     background-size: 1.4em;
   }
   @media (max-width: 960px) {
+    margin: 0px;
+
     & button {
       display: none;
     }
     & select {
       display: block;
       margin-top: 7%;
+      text-transform: uppercase;
       font-family: "Avenir Next";
       font-style: normal;
       font-size: 16px;
@@ -374,6 +381,7 @@ const RadioButton = styled.div`
     text-align: center;
     & img {
       width: 100px;
+      filter: grayscale(100%);
     }
   }
   @media (max-width: 960px) {

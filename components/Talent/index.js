@@ -708,7 +708,7 @@ const Talent = ({ talent, lang }) => {
         )} */}
       {talent.creations.reverse().length !== 0 && (
         <Creations>
-          <h3>last creations with Daze</h3>
+          <h3>last creations </h3>
           <Slider
             left={{ desktop: "10%", mobile: "0" }}
             sliderName="slide-client"

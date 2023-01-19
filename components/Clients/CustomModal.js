@@ -48,13 +48,25 @@ const CustomModal = (props) => {
       width: 40px !important;
     }
 
-    @media (min-width: 2560px) {
-      width: 100%;
-    }
+    // @media (min-width: 2560px) {
+    //   width: 100%;
+    // }
     // @media (min-width: 1440px) {
     //   width: 70%;
     //   max-width: 100%;
     // }
+    @media (max-width: 1440px) {
+      width: 86%;
+      max-width: 100%;
+    }
+    @media (max-width: 1024px) {
+      width: 100%;
+      max-width: 100%;
+    }
+    @media (min-width: 1442px) {
+      width: 83%;
+      max-width: 100%;
+    }
     @media (min-width: 960px) {
       .campaignMobile {
         display: none;
@@ -166,8 +178,11 @@ const CustomModal = (props) => {
       width: 636px;
       height: 529px;
     }
-    @media (min-width: 960px and max-width: 1440px) {
-      width: 415px;
+    @media (max-width: 1024px) {
+      width: 100%;
+    }
+    @media (min-width: 1440px) {
+      width: 422px;
     }
   `;
 
@@ -237,6 +252,12 @@ const CustomModal = (props) => {
     }
     @media (min-width: 2560px) {
       min-width: 60%;
+    }
+    @media (max-width: 1440px) {
+      min-width: 79%;
+    }
+    @media (max-width: 1024px) {
+      min-width: 88%;
     }
     @media (max-width: 960px) {
       height: 66vh;

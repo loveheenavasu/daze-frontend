@@ -258,14 +258,23 @@ const BackButton = styled.div`
 const PortfolioSlide = styled.div`
   margin-bottom: 5px;
   height: 690px;
-  max-width: 100%;
+  width: 100%;
   z-index: 1;
   @media (max-width: 960px) {
     overflow: hidden;
     height: 100%;
     & img {
-      object-fit: cover;
+      object-fit: contain;
     }
+  }
+  @media (max-width: 320px) {
+    width:100%;
+    & img {
+      width: 100%;
+      object-fit: cover;
+    }   
+    }
+
   }
 `;
 
@@ -398,7 +407,10 @@ const MobileCrause = styled.div`
     display: flex;
   }
   @media (max-width: 425px) {
-    height: 37vh;
+    height: 87vh;
+  }
+  @media (max-width: 378px) {
+    height: 77vh;
   }
 `;
 
@@ -542,7 +554,6 @@ const Talent = ({ talent, lang }) => {
               ) : (
                 <img
                   style={{
-                    width: "100vw",
                     height: "100%",
                   }}
                   src={`${publicRuntimeConfig.API_URL}${item.url}`}

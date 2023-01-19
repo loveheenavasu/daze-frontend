@@ -7,20 +7,20 @@ const PlayIcon = styled.div`
   top: 0;
   left: 0;
   bottom: 0;
-  right : 0;
+  right: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   & > img {
     @media (max-width: 960px) {
-      margin-bottom :7rem;
+      margin-bottom: 7rem;
     }
   }
 `;
 
 const Video = styled.video`
   transform: translateX(-28%);
-`
+`;
 
 function CreationsPlay({ item }) {
   const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
@@ -39,9 +39,8 @@ function CreationsPlay({ item }) {
     }
   }
 
-
   return (
-    <div style = {{position : 'relative' }} >
+    <div style={{ position: "relative" }}>
       <Video
         className="video"
         ref={videoRef}
@@ -56,7 +55,7 @@ function CreationsPlay({ item }) {
       </Video>
       <PlayIcon>
         <img
-          style={{ opacity: playButton ? 1 : 0}}
+          style={{ opacity: playButton ? 1 : 0 }}
           src="/assets/images/video_play.png"
           onClick={playPause}
           width={100}

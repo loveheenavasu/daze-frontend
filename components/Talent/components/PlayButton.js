@@ -49,6 +49,7 @@ function PlayButton({ item }) {
       </video>
       <PlayIcon>
         <img
+          className="playIcon"
           style={{ opacity: playButton ? 1 : 0 }}
           src="/assets/images/video_play.png"
           onClick={playPause}

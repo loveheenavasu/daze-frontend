@@ -371,7 +371,16 @@ const Creations = styled.div`
     color: #959595;
     letter-spacing: 2.5px;
     font-weight: bold;
-    margin: 20px 10%;
+
+    margin: 20px 10px;
+    left: 10%;
+    position: relative;
+  }
+  @media (max-width: 960px) {
+    h3 {
+      left: 0%;
+      margin: 20px 5px;
+    }
   }
 `;
 
@@ -407,7 +416,7 @@ const MobileCrause = styled.div`
     display: flex;
   }
   @media (max-width: 425px) {
-    height: 87vh;
+    height: 77vh;
   }
   @media (max-width: 378px) {
     height: 77vh;

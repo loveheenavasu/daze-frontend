@@ -268,7 +268,7 @@ const ResWrapper = styled.div`
       width: 153px;
       height: 40px;
       padding: 16px;
-      font-family: "Sackers Gothic Std";
+      font-family: "SackersGothicStd";
       font-style: normal;
       font-weight: 600;
       font-size: 9px;
@@ -320,6 +320,7 @@ const TabsButton = styled.div`
     line-height: 22px;
     text-align: center;
     color: #000000;
+    text-transform: uppercase;
     background: none;
     // margin-left:90px;
     cursor: pointer;
@@ -332,6 +333,9 @@ const TabsButton = styled.div`
     background-position: right 1rem center;
     background-size: 1.4em;
   }
+  & option {
+    text-transform: none;
+  }
   @media (max-width: 960px) {
     margin: 0px;
 
@@ -340,6 +344,7 @@ const TabsButton = styled.div`
     }
     & select {
       display: block;
+      border: 1px solid black;
       margin-top: 7%;
       text-transform: uppercase;
       font-family: "Avenir Next";
@@ -457,7 +462,7 @@ const Creation = (props) => {
                 setViewClient(creation);
               }}
             >
-              THE CAMPAIGN
+              MORE DETAILS
             </button>
           </span>
         </div>
@@ -480,7 +485,7 @@ const Creation = (props) => {
             setViewClient(creation);
           }}
         >
-          THE CAMPAIGN
+          MORE DETAILS
         </button>
       </ResWrapper>
     </CreationWrapperContainer>
@@ -598,7 +603,9 @@ const Clients = ({ clients, creations, lang, generalSetting, filterTabs }) => {
                   );
                 }}
               >
-                <option value="all">All</option>
+                <option value="all" className="optiontext">
+                  All
+                </option>
                 {arr?.map((tab, index) => {
                   return (
                     <option value={tab.name} key={index}>

@@ -64,7 +64,7 @@ const CustomModal = (props) => {
       max-width: 100%;
     }
     @media (min-width: 1442px) {
-      width: 83%;
+      width: 90%;
       max-width: 100%;
     }
     @media (min-width: 960px) {

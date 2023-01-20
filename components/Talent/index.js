@@ -182,7 +182,7 @@ const TalentInfos = styled.div`
         color: #000;
         margin: 0;
         text-decoration: none;
-        text-transform: uppercase;
+        // text-transform: uppercase;
         @media (max-width: 960px) {
           font-size: calc(3vw + 10px);
         }
@@ -604,7 +604,7 @@ const Talent = ({ talent, lang }) => {
                 target="__blank"
                 href={`https://www.instagram.com/${talent.instagram_id}`}
               >{`@${talent.instagram_id}`}</a>
-              <p>{nFormatter(talent.followers, 1)}</p>
+              <p className="nfollowers">{nFormatter(talent.followers, 1)}</p>
               <p>ER: {talent?.instragram_ER}%</p>
             </div>
             <div className="followers">
@@ -612,10 +612,12 @@ const Talent = ({ talent, lang }) => {
               <p>
                 <SocielLink
                   target="__blank"
-                  href={`https://www.instagram.com/${talent?.tiktok_id}`}
+                  href={`https://www.tiktok.com/@${talent?.tiktok_id}`}
                 >{`@${talent?.tiktok_id}`}</SocielLink>
               </p>
-              <p>{nFormatter(talent.tiktok_followers, 1)}</p>
+              <p className="nfollowers">
+                {nFormatter(talent.tiktok_followers, 1)}
+              </p>
               <p>ER: {talent?.tiktok_ER}%</p>
             </div>
           </SocialHandles>

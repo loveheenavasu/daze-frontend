@@ -86,3 +86,6 @@ img:hover {
     object-fit : contain !important
   }
 }
+.nfollowers{
+  text-transform: uppercase;
+}

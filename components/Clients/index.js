@@ -189,8 +189,9 @@ const CreationWrapper = styled.a`
     width: 124px;
     height: 32px;
     font-style: normal;
-    font-weight: 600;
-    font-size: 9px;
+    font-weight: 850;
+    font-size: 7.34px;
+    font-family: "SackersGothicStd";
     line-height: 9px;
     text-align: center;
     text-transform: uppercase;
@@ -314,24 +315,24 @@ const TabsButton = styled.div`
   }
   & select {
     display: none;
-    font-family: "Avenir Next";
-    font-style: normal;
-    font-size: 16px;
-    line-height: 22px;
-    text-align: center;
-    color: #000000;
-    text-transform: uppercase;
-    background: none;
-    // margin-left:90px;
-    cursor: pointer;
-    width: 100%;
-    height: 45px;
-    outline: none;
-    appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-    background-repeat: no-repeat;
-    background-position: right 1rem center;
-    background-size: 1.4em;
+    // font-family: "Avenir Next";
+    // font-style: normal;
+    // font-size: 16px;
+    // line-height: 22px;
+    // // text-align: center;
+    // color: #000000;
+    // text-transform: uppercase;
+    // background: none;
+    // // margin-left:90px;
+    // cursor: pointer;
+    // width: 100%;
+    // height: 45px;
+    // outline: none;
+    // appearance: none;
+    // background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    // background-repeat: no-repeat;
+    // background-position: right 1rem center;
+    // background-size: 1.4em;
   }
   & option {
     text-transform: none;
@@ -342,22 +343,66 @@ const TabsButton = styled.div`
     & button {
       display: none;
     }
-    & select {
-      display: block;
-      border: 1px solid black;
+    & .select-wrapper {
       margin-top: 7%;
+      position: relative;
+    }
+    & label {
+      border: 1px solid black;
+      position: relative;
+      z-index: 2;
       text-transform: uppercase;
       font-family: "Avenir Next";
       font-style: normal;
       font-size: 16px;
       line-height: 22px;
-      text-align: center;
+      text-align: center !important;
+      text-align: -moz-center !important;
+      text-align: -webkit-center !important;
       color: #000000;
       background: none;
       cursor: pointer;
       width: 286px;
       height: 45px;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #fff;
+      // padding: 12px 90px;
       outline: none;
+      -webkit-appearance: none !important;
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 1.4em;
+    }
+    & select {
+      position: absolute;
+      top: 0;
+      left: 0;
+      visibility: none;
+      display: inline;
+      justify-content: center;
+      border: 1px solid black;
+      // margin-top: 7%;
+      text-transform: uppercase;
+      font-family: "Avenir Next";
+      font-style: normal;
+      font-size: 16px;
+      // line-height: 22px;
+      text-align: center !important;
+      // text-align: -moz-center !important;
+      // text-align: -webkit-center !important;
+      color: #000000;
+      background: none;
+      cursor: pointer;
+      width: 286px;
+      height: 45px;
+      // padding: 12px 90px;
+      outline: none;
+      -webkit-appearance: none !important;
       appearance: none;
       background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
       background-repeat: no-repeat;
@@ -594,7 +639,8 @@ const Clients = ({ clients, creations, lang, generalSetting, filterTabs }) => {
             </Swiper>
           </RadioButton>
           <TabsButton>
-            <div>
+            <div className="select-wrapper">
+              <label>{selectedIndex}</label>
               <select
                 onChange={(e) => {
                   setSelectedIndex(e.target.value);

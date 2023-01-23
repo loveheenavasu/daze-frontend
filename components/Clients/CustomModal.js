@@ -149,6 +149,7 @@ const CustomModal = (props) => {
         padding-top: 0px;
         padding-bottom: 0px;
         margin-top: 5px;
+        padding: 0px 20px;
       }
     }
   `;

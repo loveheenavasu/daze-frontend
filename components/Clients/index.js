@@ -313,6 +313,9 @@ const TabsButton = styled.div`
     cursor: pointer;
     text-transform: uppercase;
   }
+  & label {
+    display: none;
+  }
   & select {
     display: none;
     // font-family: "Avenir Next";

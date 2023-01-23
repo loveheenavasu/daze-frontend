@@ -146,15 +146,16 @@ const CustomModal = (props) => {
       margin-right: 0px;
       & p {
         font-size: 14px;
-        padding-top: 20px;
-        padding-bottom: 20px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        margin-top: 5px;
       }
     }
   `;
 
   const PortfolioSlides = styled.div`
-    width: 395px;
-    height: 329px;
+    width: 330px;
+    height: 335px;
     z-index: 1;
     /* @media (max-width: 960px) {
             height: 300px;
@@ -188,7 +189,7 @@ const CustomModal = (props) => {
 
   const PortfolioSlide = styled.div`
     width: 395px;
-    height: 329px;
+    height: 371px;
     z-index: 1;
     /* @media (max-width: 960px) {
             height: 300px;
@@ -200,7 +201,6 @@ const CustomModal = (props) => {
     }
     @media (max-width: 960px) {
       width: 100%;
-      height: 329px;
       z-index: 1;
       &img {
         width: 100%;
@@ -260,11 +260,10 @@ const CustomModal = (props) => {
       min-width: 88%;
     }
     @media (max-width: 960px) {
-      height: 66vh;
+      height: 82%;
       margin: 0px 5px;
       position: absolute;
       top: 50px;
-      max-height: 600px;
       overflow: scroll;
     }
   `;

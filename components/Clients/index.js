@@ -270,8 +270,8 @@ const ResWrapper = styled.div`
       padding: 16px;
       font-family: "SackersGothicStd";
       font-style: normal;
-      font-weight: 600;
-      font-size: 9px;
+      font-weight: 850;
+      font-size: 7.34px;
       line-height: 9px;
       text-align: center;
       text-transform: uppercase;

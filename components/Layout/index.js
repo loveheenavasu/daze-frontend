@@ -8,6 +8,7 @@ import Footer from "../Footer";
 const Container = styled.div`
   margin-top: ${({ home }) => (home ? 0 : "85px")};
   width: 100%;
+  overflow-x: hidden;
   min-height: 90vh;
 `;
 
@@ -150,7 +151,9 @@ const Layout = (props) => {
         <link rel="icon" type="image/png" href="/assets/favicon.png" />
       </Head>
       <Header home={home} setLang={setLang} lang={lang}></Header>
-      <Container home={home}>{children}</Container>
+      <Container className={title} home={home}>
+        {children}
+      </Container>
       <ScrollTop />
       <Footer setLang={setLang} lang={lang}></Footer>
     </Wrapper>

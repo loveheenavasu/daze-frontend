@@ -131,7 +131,7 @@ const Footer = (props) => {
         </Link>
       </LinkWrapper>
       <TranslateWrapper>
-        <a href="" target="__blank">
+        <a href="https://www.tiktok.com/@dazemgmt" target="__blank">
           <TwitterLogo />
         </a>
         <a href="https://www.linkedin.com/company/daze-mgmt" target="__blank">

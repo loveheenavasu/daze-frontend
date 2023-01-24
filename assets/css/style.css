@@ -79,7 +79,12 @@ img:hover {
 .client-mobile-swiper .swiper-pagination-bullet-active{
   background-color: black;
 }
-
+@media(max-width:960px){
+  #slider-talent-profile-mobile > div{
+    width: auto;
+    height: 100%;
+  }
+}
 @media(max-width:320px){
   #slider-talent-profile-mobile > div{
     min-width: 100%;

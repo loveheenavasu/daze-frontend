@@ -298,7 +298,7 @@ const TabsButton = styled.div`
   position: sticky;
   top: 80px;
   background: #fff;
-  z-index: 999;
+  z-index: 1;
   display: flex;
   justify-content: center;
   margin-top: 40px;

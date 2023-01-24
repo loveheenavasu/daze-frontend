@@ -191,7 +191,7 @@ const CreationWrapper = styled.a`
     font-style: normal;
     font-weight: 850;
     font-size: 7.34px;
-    font-family: "SackersGothicStd";
+    font-family: "Sackers Gothic Std";
     line-height: 9px;
     text-align: center;
     text-transform: uppercase;
@@ -269,7 +269,7 @@ const ResWrapper = styled.div`
       width: 153px;
       height: 40px;
       padding: 16px;
-      font-family: "SackersGothicStd";
+      font-family: "Sackers Gothic Std";
       font-style: normal;
       font-weight: 850;
       font-size: 7.34px;
@@ -295,10 +295,14 @@ const CreationWrapperContainer = styled.div`
 `;
 
 const TabsButton = styled.div`
+  position: sticky;
+  top: 80px;
+  background: #fff;
+  z-index: 999;
   display: flex;
   justify-content: center;
   margin-top: 40px;
-  margin-bottom: 30px;
+  padding-bottom: 30px;
   & button {
     font-family: "Avenir Next";
     font-style: normal;

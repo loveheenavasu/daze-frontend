@@ -91,3 +91,9 @@ img:hover {
 .nfollowers{
   text-transform: uppercase;
 }
+@font-face {
+  font-family: 'Sackers Gothic Std';
+  src: url('../sackersgothicstd-heavy/SackersGothicStd-Heavy.otf');
+  font-weight: 850;
+  font-style: normal;
+  }

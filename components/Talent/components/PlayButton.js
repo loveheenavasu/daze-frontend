@@ -35,7 +35,7 @@ function PlayButton({ item }) {
       <video
         className="video"
         ref={videoRef}
-        preload="metadata"
+        autoPlay
         playsInline
         style={{
           height: "80vh",

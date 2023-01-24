@@ -90,6 +90,7 @@ img:hover {
   #slider-talent-profile-mobile{
     width: auto;
     height: 100%;
+    margin-bottom: 0px;
   }
 
 }

@@ -126,7 +126,7 @@ const PortfolioWrapper = styled.div`
 `;
 
 const TalentInfos = styled.div`
-  padding: 75px 10%;
+  padding: 50px 9%;
   // position: relative;
   background: #f6f6f6;
 
@@ -449,6 +449,7 @@ const Name = styled.h1`
     color: #000000;
     margin-bottom: 0px;
     text-transform: uppercase;
+    padding-top: 8px;
   }
   @media (max-width: 960px) {
     margin-top: -10px;
@@ -574,10 +575,10 @@ const Talent = ({ talent, lang }) => {
         </Slider>
       </MobileCrause>
       <TalentInfos>
-        <BackButton onClick={() => history.back()}>
+        {/* <BackButton onClick={() => history.back()}> */}
           {/* <div id="scroll-button-bg"></div> */}
-          <img src="/assets/svg/arrowScrollTop.svg" alt="" />
-        </BackButton>
+          {/* <img src="/assets/svg/arrowScrollTop.svg" alt="" /> */}
+        {/* </BackButton> */}
         <TalentName>
           <Name className="talent-name">
             {talent.firstname + " " + talent.lastname}

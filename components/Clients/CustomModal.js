@@ -336,7 +336,11 @@ const CustomModal = (props) => {
       </ClientWrapper>
       <div class="swiper-mobile">
         <ClientDescMobile>
-          <h1 className=" campaignMobile">{viewClient?.campaign_name}</h1>
+          <h1 className=" campaignMobile">
+            {lang === "fr"
+              ? viewClient?.campaign_name_fr
+              : viewClient?.campaign_name}
+          </h1>
         </ClientDescMobile>
 
         <Swiper

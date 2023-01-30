@@ -552,9 +552,7 @@ const Clients = ({ clients, creations, lang, generalSetting, filterTabs }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [viewClient, setViewClient] = useState({});
   const [tabCreation, seTabCreation] = useState(creations);
-  const [selectedIndex, setSelectedIndex] = useState(
-    translations[lang].filter_all
-  );
+  const [selectedIndex, setSelectedIndex] = useState("all");
   const [activeImage, setActiveImage] = React.useState(0);
   const [position, setPosition] = React.useState(`${activeImage * 100}%`);
 
@@ -565,6 +563,21 @@ const Clients = ({ clients, creations, lang, generalSetting, filterTabs }) => {
       id: index,
     };
   });
+
+  useEffect(() => {
+    const item = arr.find(
+      (itm) => itm.name === selectedIndex || itm.name_fr === selectedIndex
+    );
+    if (item) {
+      if (lang === "fr") {
+        setSelectedIndex(item.name_fr);
+      } else {
+        setSelectedIndex(item.name);
+      }
+    } else {
+      setSelectedIndex(translations[lang].filter_all);
+    }
+  }, [lang]);
 
   console.log("tab", translations[lang].filter_all);
   useEffect(() => {
@@ -582,11 +595,12 @@ const Clients = ({ clients, creations, lang, generalSetting, filterTabs }) => {
     });
   }, []);
 
-  useEffect(() => {
-    console.log("setSelectedIndex==>", translations[lang].filter_all);
-    setSelectedIndex(translations[lang].filter_all);
-  }, [translations[lang].filter_all]);
-  console.log("selectedIndex===>", selectedIndex);
+  // useEffect(() => {
+  //   console.log("setSelectedIndex==>", translations[lang].filter_all);
+  //   setSelectedIndex(translations[lang].filter_all);
+  //   console.log("selectedIndex===>2", selectedIndex);
+  // }, [translations[lang].filter_all]);
+  console.log("selectedIndex===>1", selectedIndex);
 
   const handleClick = (i) => {
     setActiveImage(i);
@@ -688,16 +702,26 @@ const Clients = ({ clients, creations, lang, generalSetting, filterTabs }) => {
                 onChange={(e) => {
                   setSelectedIndex(e.target.value);
                   seTabCreation(
-                    creations.filter((f) => f.filter?.name === e.target.value)
+                    creations.filter(
+                      (f) =>
+                        f.filter?.name === e.target.value ||
+                        f.filter?.name_fr === e.target.value
+                    )
                   );
                 }}
               >
-                <option value="all" className="optiontext">
+                <option
+                  value={translations[lang].filter_all}
+                  className="optiontext"
+                >
                   {translations[lang].filter_all}
                 </option>
                 {arr?.map((tab, index) => {
                   return (
-                    <option value={tab.name} key={index}>
+                    <option
+                      value={lang === "fr" ? tab.name_fr : tab.name}
+                      key={index}
+                    >
                       {lang === "fr" ? tab.name_fr : tab.name}
                     </option>
                   );
@@ -727,7 +751,11 @@ const Clients = ({ clients, creations, lang, generalSetting, filterTabs }) => {
                   onClick={() => {
                     setSelectedIndex(index);
                     seTabCreation(
-                      creations.filter((f) => f.filter?.name === tab.name)
+                      creations.filter(
+                        (f) =>
+                          f.filter?.name === tab.name ||
+                          f.filter?.name_fr === tab.name_fr
+                      )
                     );
                   }}
                 >

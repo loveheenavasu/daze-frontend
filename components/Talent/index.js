@@ -576,13 +576,13 @@ const Talent = ({ talent, lang }) => {
       </MobileCrause>
       <TalentInfos>
         {/* <BackButton onClick={() => history.back()}> */}
-          {/* <div id="scroll-button-bg"></div> */}
-          {/* <img src="/assets/svg/arrowScrollTop.svg" alt="" /> */}
+        {/* <div id="scroll-button-bg"></div> */}
+        {/* <img src="/assets/svg/arrowScrollTop.svg" alt="" /> */}
         {/* </BackButton> */}
         <TalentName>
           <Name className="talent-name">
             {talent.firstname + " " + talent.lastname}
-            <span>{talent.talent}</span>
+            <span>{lang === "fr" ? talent?.talent_fr : talent?.talent}</span>
           </Name>
 
           <DestopWrapper>
@@ -652,7 +652,7 @@ const Talent = ({ talent, lang }) => {
           </MobileWrapper>
 
           <p className="button-wrapper">
-            {talent.description}
+            {lang === "fr" ? talent?.description_fr : talent?.description}
             {/* <Button>
               <Link
                 href={{
@@ -737,7 +737,7 @@ const Talent = ({ talent, lang }) => {
         )} */}
       {talent.creations.reverse().length !== 0 && (
         <Creations>
-          <h3>last creations </h3>
+          <h3>{translations[lang].lastcreation}</h3>
           <Slider
             left={{ desktop: "10%", mobile: "0" }}
             sliderName="slide-client"

@@ -6,6 +6,7 @@ import Link from "next/link";
 import translations from "./locale";
 import getConfig from "next/config";
 import { useState } from "react";
+const ReactMarkdown = require("react-markdown");
 import CustomModal from "./CustomModal";
 import Slider from "../Slider/sliderTalent";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -218,10 +219,13 @@ const CreationWrapper = styled.a`
     font-size: 18px;
     margin-bottom: 10px;
     &:hover div {
-      opacity: 0;
-    }
+      opacity: 1;
     button {
       display: none;
+    }
+    .instagram-client-link{
+      display:none;
+
     }
   }
 `;
@@ -504,7 +508,7 @@ const Creation = (props) => {
               className="instabtnhover"
               onClick={() => window.open(creation.instagram_link)}
             >
-              VIEW ON INSTAGRAM
+              {translations[lang].view_on_insta}
             </button>
             <br></br>
             <button
@@ -514,20 +518,20 @@ const Creation = (props) => {
                 setViewClient(creation);
               }}
             >
-              MORE DETAILS
+              {translations[lang].more_details}
             </button>
           </span>
         </div>
       </CreationWrapper>
       <ResWrapper>
-        <h1>{creation.name.split(" x ")[0]}</h1>
+        {/* <h1>{creation.name.split(" x ")[0]}</h1>
         <h1>x</h1>
-        <h1>{creation.name.split(" x ")[1]}</h1>
+        <h1>{creation.name.split(" x ")[1]}</h1> */}
         <button
           className="instagrambtn"
           onClick={() => window.open(creation.instagram_link)}
         >
-          VIEW ON INSTAGRAM
+          {translations[lang].view_on_insta}
         </button>
         <br></br>
         <button
@@ -537,7 +541,7 @@ const Creation = (props) => {
             setViewClient(creation);
           }}
         >
-          MORE DETAILS
+          {translations[lang].more_details}
         </button>
       </ResWrapper>
     </CreationWrapperContainer>
@@ -555,10 +559,11 @@ const Clients = ({ clients, creations, lang, generalSetting, filterTabs }) => {
   const arr = filterTabs.map((tab, index) => {
     return {
       name: tab.name,
+      name_fr: tab.name_fr,
       id: index,
     };
   });
-
+  console.log("tab", arr);
   useEffect(() => {
     let tl = gsap.timeline();
     tl.set("#logos-clients-wrapper", {
@@ -600,8 +605,30 @@ const Clients = ({ clients, creations, lang, generalSetting, filterTabs }) => {
         <Wrapper className="sliderclass">
           <ClientWrapper>
             <div>
-              <h1>{generalSetting?.client_heading_en}</h1>
-              <p>{generalSetting?.client_desc_en}</p>
+              {/* <h1>{generalSetting?.client_heading_en}</h1> */}
+              <h1>
+                {lang === "fr"
+                  ? generalSetting?.client_heading_fr
+                  : generalSetting?.client_heading_en}
+              </h1>
+              {/* <h1> */}
+              {/* <ReactMarkdown
+                source={
+                  lang === "fr"
+                    ? generalSetting?.client_heading_fr
+                    : generalSetting?.client_heading_en
+                }
+              /> */}
+              {/* </h1> */}
+
+              {/* <p>{generalSetting?.client_desc_en}</p> */}
+              <ReactMarkdown
+                source={
+                  lang === "fr"
+                    ? generalSetting?.client_desc_fr
+                    : generalSetting?.client_desc_en
+                }
+              />
               <div className="slider-parent">
                 <Slider
                   left={{ desktop: "0", mobile: "0" }}
@@ -662,7 +689,7 @@ const Clients = ({ clients, creations, lang, generalSetting, filterTabs }) => {
                 {arr?.map((tab, index) => {
                   return (
                     <option value={tab.name} key={index}>
-                      {tab.name}
+                      {lang === "fr" ? tab.name_fr : tab.name}
                     </option>
                   );
                 })}
@@ -695,7 +722,7 @@ const Clients = ({ clients, creations, lang, generalSetting, filterTabs }) => {
                     );
                   }}
                 >
-                  {tab.name}
+                  {lang === "fr" ? tab.name_fr : tab.name}
                 </button>
               );
             })}
@@ -727,6 +754,7 @@ const Clients = ({ clients, creations, lang, generalSetting, filterTabs }) => {
             clients={clients}
             creations={creations}
             viewClient={viewClient}
+            lang={lang}
           />
         )}
       </>

@@ -12,7 +12,7 @@ import "swiper/css/pagination";
 import { Pagination } from "swiper";
 
 const CustomModal = (props) => {
-  const { clients, setIsOpen, creations, isOpen, viewClient } = props;
+  const { clients, setIsOpen, creations, isOpen, viewClient, lang } = props;
   const { publicRuntimeConfig } = getConfig();
 
   const ClientWrapper = styled.div`
@@ -322,8 +322,16 @@ const CustomModal = (props) => {
           ))}
         </Slider>
         <ClientDesc>
-          <h1 className="campaignName">{viewClient?.campaign_name}</h1>
-          <p>{viewClient?.campaign_portfolio_desc}</p>
+          <h1 className="campaignName">
+            {lang === "fr"
+              ? viewClient?.campaign_name_fr
+              : viewClient?.campaign_name}
+          </h1>
+          <p>
+            {lang === "fr"
+              ? viewClient?.campaign_portfolio_desc_fr
+              : viewClient?.campaign_portfolio_desc}
+          </p>
         </ClientDesc>
       </ClientWrapper>
       <div class="swiper-mobile">

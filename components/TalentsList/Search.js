@@ -239,6 +239,7 @@ const Search = (props) => {
           <Filter
             setFilter={props.setFilter}
             filter={props.filter}
+            lang={lang}
             setFilterOpen={(bool) => setFilterOpen(bool)}
           ></Filter>
         </FilterButton>

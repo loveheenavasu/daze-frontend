@@ -552,7 +552,9 @@ const Clients = ({ clients, creations, lang, generalSetting, filterTabs }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [viewClient, setViewClient] = useState({});
   const [tabCreation, seTabCreation] = useState(creations);
-  const [selectedIndex, setSelectedIndex] = useState("all");
+  const [selectedIndex, setSelectedIndex] = useState(
+    translations[lang].filter_all
+  );
   const [activeImage, setActiveImage] = React.useState(0);
   const [position, setPosition] = React.useState(`${activeImage * 100}%`);
 
@@ -563,7 +565,8 @@ const Clients = ({ clients, creations, lang, generalSetting, filterTabs }) => {
       id: index,
     };
   });
-  console.log("tab", arr);
+
+  console.log("tab", translations[lang].filter_all);
   useEffect(() => {
     let tl = gsap.timeline();
     tl.set("#logos-clients-wrapper", {
@@ -578,6 +581,12 @@ const Clients = ({ clients, creations, lang, generalSetting, filterTabs }) => {
       ease: "Expo.easeIn",
     });
   }, []);
+
+  useEffect(() => {
+    console.log("setSelectedIndex==>", translations[lang].filter_all);
+    setSelectedIndex(translations[lang].filter_all);
+  }, [translations[lang].filter_all]);
+  console.log("selectedIndex===>", selectedIndex);
 
   const handleClick = (i) => {
     setActiveImage(i);
@@ -684,7 +693,7 @@ const Clients = ({ clients, creations, lang, generalSetting, filterTabs }) => {
                 }}
               >
                 <option value="all" className="optiontext">
-                  All
+                  {translations[lang].filter_all}
                 </option>
                 {arr?.map((tab, index) => {
                   return (
@@ -704,7 +713,7 @@ const Clients = ({ clients, creations, lang, generalSetting, filterTabs }) => {
               id="all-tabs"
               onClick={() => setSelectedIndex("all")}
             >
-              All
+              {translations[lang].filter_all}
             </button>
             {arr?.map((tab, index) => {
               return (

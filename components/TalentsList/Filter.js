@@ -1,7 +1,7 @@
 import React, { Component, useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import gsap from "gsap";
-
+import translations from "./locale";
 import { nFormatter } from "../../utils";
 
 const Wrapper = styled.div`
@@ -141,7 +141,7 @@ const Submit = styled.div`
   }
 `;
 
-const Filter = (props) => {
+const Filter = (props, lang) => {
   const FilterBox = useRef();
   useEffect(() => {
     // add when mounted
@@ -305,7 +305,7 @@ const Filter = (props) => {
           </InputWrapper>
         </InputContainer>
       </Content>
-      <Submit onClick={handleSubmit}>done</Submit>
+      <Submit onClick={handleSubmit}>{translations[props.lang].donebtn}</Submit>
     </Wrapper>
   );
 };

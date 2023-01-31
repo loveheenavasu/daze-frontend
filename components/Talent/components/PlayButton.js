@@ -36,6 +36,7 @@ function PlayButton({ item }) {
         className="video"
         ref={videoRef}
         autoPlay
+        muted
         playsInline
         style={{
           height: "80vh",

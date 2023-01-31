@@ -126,7 +126,7 @@ const PortfolioWrapper = styled.div`
 `;
 
 const TalentInfos = styled.div`
-  padding: 50px 9%;
+  padding: 25px 9%;
   // position: relative;
   background: #f6f6f6;
 

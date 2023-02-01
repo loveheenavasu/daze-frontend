@@ -199,16 +199,8 @@ function validateInputField(value, error) {
 }
 
 function InputField(props) {
-  const {
-    placeholder,
-    name,
-    errorText,
-    type,
-    required,
-    style,
-    lang,
-    subject,
-  } = props;
+  const { placeholder, name, errorText, type, required, style, lang, subject } =
+    props;
   const options = required
     ? {
         validate:
@@ -228,7 +220,6 @@ function InputField(props) {
         error={required ? error : false}
         type={type}
         placeholder={placeholder}
-        type="text"
         value={subject}
       />{" "}
       {required && isTouched && error ? <Error>{error}</Error> : null}

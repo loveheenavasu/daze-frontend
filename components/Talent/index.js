@@ -257,7 +257,7 @@ const BackButton = styled.div`
 
 const PortfolioSlide = styled.div`
   margin-bottom: 5px;
-  height: 690px;
+  height: 552px;
   width: 100%;
   z-index: 1;
   @media (max-width: 960px) {

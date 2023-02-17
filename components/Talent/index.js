@@ -13,7 +13,6 @@ import getConfig from "next/config";
 import PlayButton from "./components/PlayButton";
 import PlayButtonDeskTop from "./components/PlayButtonDesktop";
 import CreationsPlay from "./components/CreationsPlay";
-import {markdown} from 'markdown'
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
 // const Layout = dynamic(() => import("../Layout"), { ssr: false });

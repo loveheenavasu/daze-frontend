@@ -13,6 +13,7 @@ import getConfig from "next/config";
 import PlayButton from "./components/PlayButton";
 import PlayButtonDeskTop from "./components/PlayButtonDesktop";
 import CreationsPlay from "./components/CreationsPlay";
+import {markdown} from 'markdown'
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
 // const Layout = dynamic(() => import("../Layout"), { ssr: false });
@@ -141,6 +142,7 @@ const TalentInfos = styled.div`
     // position: relative;
     margin: 10px;
     padding-left: 2rem;
+    line-height: 22px;
     // right: 0;
     @media (max-width: 960px) {
       padding: 0;
@@ -539,6 +541,13 @@ const Talent = ({ talent, lang }) => {
     const walk = (x - startX) * 3; //scroll-fast
     PortfolioWrapper.scrollLeft = scrollLeft - walk;
   };
+  const replaceSlashN = (str) => {
+    return str?.replace(/\n/g,'<br />');
+  }
+
+  const descText = (lang === "fr" ? replaceSlashN(talent?.description_fr) : replaceSlashN(talent?.description ) )
+
+  // console.log("dataaaa",descText)
   return (
     <Wrapper>
       <MobileCrause>
@@ -650,9 +659,12 @@ const Talent = ({ talent, lang }) => {
               </Link>
             </Button>
           </MobileWrapper>
-
-          <p className="button-wrapper">
-            {lang === "fr" ? talent?.description_fr : talent?.description}
+          {/* <div className="preContainer" > */}
+          <p className="button-wrapper" style={{display: 'block'}} dangerouslySetInnerHTML={{__html: descText}} />
+          {/* <pre className="button-wrapper"  dangerouslySetInnerHTML={{__html: lang === "fr" ? talent?.description_fr : talent?.description}}></pre> */}
+          {/* </div> */}
+          {/* <p className="button-wrapper">
+            {lang === "fr" ? talent?.description_fr : talent?.description} */}
             {/* <Button>
               <Link
                 href={{
@@ -670,7 +682,7 @@ const Talent = ({ talent, lang }) => {
                 </a>
               </Link>
             </Button> */}
-          </p>
+          {/* </p> */}
         </div>
       </TalentInfos>
       <DestopWrapper>

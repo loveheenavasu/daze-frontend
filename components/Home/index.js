@@ -14,6 +14,9 @@ import Slider from "../Slider";
 
 import ScrollReveal from "./scrollReveal";
 
+import CookieConsent from "react-cookie-consent";
+
+
 const Wrapper = styled.div`
   position: relative;
   width: 100%;
@@ -38,7 +41,23 @@ const Wrapper = styled.div`
   @media (max-width: 960px) {
     margin-top: 100vh;
   }
+CookieConsent {
+    buttonStyle{
+      background-color :#fff;
+    }
+  }
 `;
+
+// CookieConsent {
+//   buttonStyle{
+//     background-color :#fff;
+//   }
+// }
+// const CookieConsent = styled.div`
+// buttonStyle{
+//       background-color :#fff;
+//     }
+// `
 
 const Container = styled(Default)``;
 
@@ -669,6 +688,14 @@ const LeftMenu = ({ lang }) => {
 
 const Home = (props, req) => {
   const { lang, page } = props;
+  console.log(page,"data")
+
+const titleText = (lang === 'fr' ? page.digitial_marketing_title_fr : page.digitial_marketing_title_en) ;
+
+const influText= (lang === 'fr' ? page.Influential_talents_title_fr : page.Influential_talents_title_en);
+
+const standText = (lang === 'fr' ? page.stand_out_crowd_title_fr : page.stand_out_crowd_title_en);
+
   useEffect(() => {}, []);
   return (
     <Wrapper>
@@ -677,14 +704,14 @@ const Home = (props, req) => {
         {/* <LeftTitle>who are we?</LeftTitle> */}
         <Container>
           <center>
-            <Title>
-              <h2 className="italic" style={{ marginLeft: -250 }}>
+            <Title  dangerouslySetInnerHTML={{__html: titleText}}>
+              {/* <h2 className="italic" style={{ marginLeft: -250 }}>
                 Digital
               </h2>
               <h2 className="book">MARKETING</h2>
               <h2 className="book" style={{ marginLeft: 350 }}>
                 AGENCY
-              </h2>
+              </h2> */}
             </Title>
             <Intro>
               {lang === "fr" ? page.who_intro_fr : page.who_intro_en}
@@ -762,14 +789,7 @@ const Home = (props, req) => {
       <div className="content" style={{ marginTop: 50 }} id="talents-home">
         <Container style={{ marginBottom: 50 }}>
           <center>
-            <Title>
-              <h2 className="italic" style={{ marginLeft: -150 }}>
-                Influential
-              </h2>
-              <h2 className="book" style={{ marginLeft: 250 }}>
-                TALENTS
-              </h2>
-            </Title>
+          <Title dangerouslySetInnerHTML={{__html: influText}}/>
             <TalentsInfos>
               <ReactMarkdown
                 source={lang === "fr" ? page.talents_fr : page.talents_en}
@@ -810,9 +830,7 @@ const Home = (props, req) => {
       <div className="content" style={{ marginBottom: 120 }} id="whatwedo-home">
         {/* <LeftTitle>what we do</LeftTitle> */}
         <center>
-          <Title style={{ transform: "scale(0.8)" }}>
-            <h2 className="stand-book">STAND OUT </h2>
-            <h2 className="stand-italic">FROM THE CROWD</h2>
+          <Title style={{ transform: "scale(0.8)" }} dangerouslySetInnerHTML={{__html: standText}}>
           </Title>
         </center>
         <Slider
@@ -866,6 +884,14 @@ const Home = (props, req) => {
           </center>
         </Container>
       </div>
+      <CookieConsent
+      buttonStyle={{ background: '#fff', marginRight: '25px', padding: '8px 20px'}}
+      buttonText="I Accept"
+      >
+        <span style={{ color: 'white' }}>
+          This website uses cookies to enhance the user experience.
+        </span>
+      </CookieConsent>
     </Wrapper>
   );
 };

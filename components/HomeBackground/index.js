@@ -263,7 +263,8 @@ function getDefaultPosition() {
   return arr;
 }
 
-const HomeBackground = props => {
+const HomeBackground = (props) => {
+  const {  page } = props;
   // const [imgIndex, setImgIndex] = useState([]);
   // let [isImageArray, setIsImageArray] = useState(false);
   // let [img1, setImg1] = useState(null);
@@ -278,18 +279,22 @@ const HomeBackground = props => {
   // };
 
   let [animActive, setAnimActive] = useState(false);
-
+// const [imageUrl, setimageUrl]= useState(page.home_images);
+console.log("image",page.home_images)
   useEffect(() => {
     let imgs = [...document.getElementsByClassName("bg-img")];
+    // imgs = imgs.map(r => ({html}))
+    console.log("Imag===>", imgs)
+    // let imgs = [...page.home_images];
     let imgIndex = [];
     let timelines = [];
     imgs.forEach(img => {
-      let ranNum = Math.round(Math.random() * 20);
+      let ranNum = Math.round(Math.random() * page.home_images.length);
       while (imgIndex.findIndex(item => item === ranNum) !== -1) {
-        ranNum = Math.round(Math.random() * 20);
+        ranNum = Math.round(Math.random() * page.home_images.length);
       }
       imgIndex.push(ranNum);
-      img.style.backgroundImage = `url("/assets/images/home_background/Photo HP${ranNum}.jpg")`;
+      img.style.backgroundImage = `url("https://api.daze-mgmt.com${page.home_images[ranNum]?.url }")`;
     });
     gsap.set(imgs, {
       left: 0,
@@ -547,6 +552,7 @@ const HomeBackground = props => {
       /> */}
       <LogoContainer id="LogoContainerHome">
         <img src="/assets/svg/daze-icon.svg" alt="" />
+        {/* <p>Data</p> */}
       </LogoContainer>
       <ScrollWrapper id="scroll-line">
         <p>scroll down</p>

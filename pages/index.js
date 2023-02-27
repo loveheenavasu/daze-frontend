@@ -11,7 +11,7 @@ const Layout = dynamic(() => import("../components/Layout"), { ssr: false });
 
 const HomePage = (props) => {
   let { lang, setLang, page } = props;
-  // console.log(props);
+  console.log("page123===>", page);
   return (
     <Layout
       title="HOME"
@@ -21,7 +21,7 @@ Chez Daze management, nous, nous engageons à raconter une histoire sincère, pe
       lang={lang}
       setLang={setLang}
     >
-      <HomeBackground />
+      <HomeBackground page={page} />
       <Home lang={lang} page={page} />
     </Layout>
   );
@@ -29,6 +29,7 @@ Chez Daze management, nous, nous engageons à raconter une histoire sincère, pe
 
 HomePage.getInitialProps = async (ctx) => {
   const res = await fetch(`${publicRuntimeConfig.API_URL}/home-page`);
+
   return {
     page: await res.json(),
   };

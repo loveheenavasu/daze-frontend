@@ -105,16 +105,16 @@ const Title = styled.div`
     font-family: "Bodoni-BookIta";
   }
   & h2.book {
-    font-family: "Bodoni-Book";
-    font-size: 111px;
+    font-family: "SVN-Miller Banner";
+    font-size: 65px;
     letter-spacing: 8px;
-    line-height: 1;
+    line-height: 75px;
   }
   & h2.italic {
-    font-size: 95px;
-    letter-spacing: 5px;
-    line-height: 1.5;
-    font-family: "Bodoni-BookIta";
+    font-size: 65px;
+    letter-spacing: 3px;
+    text-transform:upperCase;
+    font-family: "SVN-Miller Banner";
   }
   @media (max-width: 960px) {
     /* transform: scale(0.5); */
@@ -185,6 +185,10 @@ const Intro = styled.p`
   width: 60%;
   text-align: justify;
   line-height: 1.7;
+
+  strong{
+    font-weight:bold;
+  }
   @media (max-width: 960px) {
     width: 90%;
   }
@@ -252,6 +256,10 @@ const Infos = styled.div`
     margin-inline-start: 0px;
     margin-inline-end: 0px; */
   }
+
+  strong {
+    font-weight: bold;
+  }
   @media (max-width: 960px) {
     hieght: auto;
     justify-content: center;
@@ -283,6 +291,9 @@ const TalentsInfos = styled.div`
     font-size: 22px;
     width: 90%;
     line-height: 1.7;
+  }
+  strong{
+    font-weight:bold;
   }
   @media (max-width: 960px) {
     p {
@@ -322,7 +333,12 @@ const ClientInfo = styled.div`
       text-align: left;
       margin: 0;
       text-align: justify;
+
     }
+    strong {
+      font-weight: bold;
+    }
+    
   }
   @media (max-width: 960px) {
     & > div {
@@ -714,7 +730,7 @@ const standText = (lang === 'fr' ? page.stand_out_crowd_title_fr : page.stand_ou
               </h2> */}
             </Title>
             <Intro>
-              {lang === "fr" ? page.who_intro_fr : page.who_intro_en}
+              <ReactMarkdown source={lang === "fr" ? page.who_intro_fr : page.who_intro_en}/>
             </Intro>
             <Infos>
               <ReactMarkdown
@@ -790,6 +806,9 @@ const standText = (lang === 'fr' ? page.stand_out_crowd_title_fr : page.stand_ou
         <Container style={{ marginBottom: 50 }}>
           <center>
           <Title dangerouslySetInnerHTML={{__html: influText}}/>
+          {/* <Title>
+            <ReactMarkdown source={influText}/>
+          </Title> */}
             <TalentsInfos>
               <ReactMarkdown
                 source={lang === "fr" ? page.talents_fr : page.talents_en}
@@ -886,9 +905,10 @@ const standText = (lang === 'fr' ? page.stand_out_crowd_title_fr : page.stand_ou
       </div>
       <CookieConsent
       buttonStyle={{ background: '#fff', marginRight: '25px', padding: '8px 20px'}}
+      style={{ background: 'black' }}
       buttonText="I Accept"
       >
-        <span style={{ color: 'white' }}>
+        <span style={{ color: 'white'}}>
           This website uses cookies to enhance the user experience.
         </span>
       </CookieConsent>

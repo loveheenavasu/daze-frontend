@@ -21,7 +21,7 @@ Chez Daze management, nous, nous engageons à raconter une histoire sincère, pe
       lang={lang}
       setLang={setLang}
     >
-      <HomeBackground page={page} />
+      <HomeBackground page={page} lang={lang}/>
       <Home lang={lang} page={page} />
     </Layout>
   );

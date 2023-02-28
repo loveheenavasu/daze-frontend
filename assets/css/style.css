@@ -41,73 +41,90 @@ img:hover {
 }
 
 
-.swiper-mobile{
+.swiper-mobile {
   width: 100%;
   top: 6%;
   position: absolute;
 }
-.swiper-mobile img{
+
+.swiper-mobile img {
   width: 100%;
   height: 100%;
   max-height: 90%;
   object-fit: contain;
 }
-@media(min-width:960px){
-  .swiper-mobile{
+
+@media(min-width:960px) {
+  .swiper-mobile {
     display: none;
   }
 }
 
-.bullet-field{
+.bullet-field {
   padding: 2px !important;
 
 }
 
 .bullet-field_active {
-  background: red!important;
+  background: red !important;
   padding: 2px !important;
   border: 2px solid red !important;
-  opacity: 1!important;
+  opacity: 1 !important;
 }
-.client-mobile-swiper.swiper{
+
+.client-mobile-swiper.swiper {
   overflow: hidden;
   margin-top: 20px;
 }
+
 /* .client-mobile-swiper .swiper-pagination{
   bottom: -18px !important;
 } */
-.client-mobile-swiper .swiper-pagination-bullet-active{
+.client-mobile-swiper .swiper-pagination-bullet-active {
   background-color: black;
 }
-.Clients{
+
+.Clients {
   overflow-x: visible !important;
 }
-@media(max-width:960px){
-  #slider-talent-profile-mobile > div{
+
+@media(max-width:960px) {
+  #slider-talent-profile-mobile>div {
     width: auto;
     height: 100%;
   }
-  #slider-talent-profile-mobile{
+
+  #slider-talent-profile-mobile {
     width: auto;
     height: 100%;
     margin-bottom: 0px;
   }
 
 }
-@media(max-width:320px){
-  #slider-talent-profile-mobile > div{
+
+@media(max-width:320px) {
+  #slider-talent-profile-mobile>div {
     min-width: 100%;
   }
-  .playIcon{
-    object-fit : contain !important
+
+  .playIcon {
+    object-fit: contain !important
   }
 }
-.nfollowers{
+
+.nfollowers {
   text-transform: uppercase;
 }
+
 @font-face {
   font-family: 'Sackers Gothic Std';
   src: url('../sackersgothicstd-heavy/SackersGothicStd-Heavy.otf');
   font-weight: 850;
   font-style: normal;
-  }
+}
+
+@font-face {
+  font-family: 'SVN-Miller Banner';
+  src: url('../svn_miller_banner/SVN-Miller\ Banner.ttf');
+  font-weight: 400;
+}

@@ -9,7 +9,7 @@ const Container = styled.div`
   margin-top: ${({ home }) => (home ? 0 : "85px")};
   width: 100%;
   overflow-x: hidden;
-  min-height: 90vh;
+  min-height: 60vh;
 `;
 
 const Wrapper = styled.div`

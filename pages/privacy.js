@@ -1,12 +1,12 @@
 import React  from "react";
 import dynamic from "next/dynamic";
-import UseTerm from "../components/TermCondition/index"
+import PolicyTerm from "../components/PolicyOfUse/index"
 import getConfig from "next/config";
 const { publicRuntimeConfig } = getConfig();
 const Layout = dynamic(() => import("../components/Layout"), { ssr: false });
-const Terms = (props) =>{
-    const { lang, setLang,creations,term } = props;
-    console.log("page",lang)
+const policyTerm = (props) =>{
+    const { lang, setLang,creations,policyData } = props;
+    console.log("page",policyData)
     return(
         <Layout
       title="Clients"
@@ -16,17 +16,17 @@ Nous nous assurons ainsi que le contenu délivré soit de qualité et perçu com
       setLang={setLang}
       lang={lang}
     >
-      <UseTerm lang={lang} term={term}/>
+      <PolicyTerm lang={lang} policyData={policyData}/>
     </Layout>
     )
 };
 
-Terms.getInitialProps = async (ctx) => {
-    const termOfUse = await fetch(`${publicRuntimeConfig.API_URL}/term-of-use`);
+policyTerm.getInitialProps = async (ctx) => {
+    const policyOfUse = await fetch(`${publicRuntimeConfig.API_URL}/policy-of-use`);
   
     return {
-      term: await termOfUse.json(),
+      policyData: await policyOfUse.json(),
     };
   };
 
-export default Terms;
+export default policyTerm;

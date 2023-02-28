@@ -3,6 +3,7 @@ import styled from "styled-components";
 import _ from "lodash";
 import gsap from "gsap";
 import { shuffle } from "../../utils";
+const ReactMarkdown = require("react-markdown");
 
 const Wrapper = styled.div`
   width: 100%;
@@ -27,7 +28,19 @@ const Wrapper = styled.div`
       transform-origin: left top;
       transform: scale(0.7);
     }
+    
+
   }
+  & .bg-img-1 {
+    opacity:0.534 !important;
+  }
+  & .bg-img-4 {
+    opacity:0.534 !important;
+  }
+  & .bg-img-2 {
+    opacity:0.534 !important;
+  }
+
   /* & .bg-img-1 {
     left: 20vw;
     top: -18vh;
@@ -123,6 +136,24 @@ const LogoContainer = styled.div`
     top: 0;
     bottom: 0;
     margin: auto;
+
+  }
+  .imgdowntext {
+    font-size: 23.27px;
+    position: absolute;
+    line-height:31px;
+    font-family: "SVN-Miller Banner";
+    color: #000;
+    text-align:center;
+    left: 37%;
+    top:58%;
+  }
+
+  @media (max-width: 425px) {
+    .imgdowntext{
+      width: 205px;
+      left: 25%;
+    }
   }
 `;
 
@@ -218,7 +249,7 @@ function parallax(defaultPos) {
       // if (scrollY < window.innerHeight * 1.5)
       {
         let imgs = [...document.getElementsByClassName("bg-img")];
-        gsap.to(imgs, 0.5, {
+        gsap.to(imgs, 1, {
           ease: "Power2.easeOut",
           translateY: function(i) {
             // if (
@@ -229,7 +260,7 @@ function parallax(defaultPos) {
           }
           // }
         });
-        gsap.to("#LogoContainerHome", 0.5, {
+        gsap.to("#LogoContainerHome", 1, {
           ease: "Power2.easeOut",
           translateY: function(i) {
             return -scrollY * 0.2 * 4;
@@ -264,7 +295,8 @@ function getDefaultPosition() {
 }
 
 const HomeBackground = (props) => {
-  const {  page } = props;
+  const {  page, lang } = props;
+  // console.log("page111",page)
   // const [imgIndex, setImgIndex] = useState([]);
   // let [isImageArray, setIsImageArray] = useState(false);
   // let [img1, setImg1] = useState(null);
@@ -284,7 +316,6 @@ console.log("image",page.home_images)
   useEffect(() => {
     let imgs = [...document.getElementsByClassName("bg-img")];
     // imgs = imgs.map(r => ({html}))
-    console.log("Imag===>", imgs)
     // let imgs = [...page.home_images];
     let imgIndex = [];
     let timelines = [];
@@ -313,18 +344,18 @@ console.log("image",page.home_images)
           left: setRanPosition(index).x + "vw",
           top: setRanPosition(index).y + "vh",
           onComplete: () => {
-            let ranNum = Math.round(Math.random() * 20);
+            let ranNum = Math.round(Math.random() * page.home_images.length);
             while (imgIndex.findIndex(item => item === ranNum) !== -1) {
-              ranNum = Math.round(Math.random() * 20);
+              ranNum = Math.round(Math.random() * page.home_images.length);
             }
             imgIndex[index] = ranNum;
             // setImgIndex(indexArray);
-            img.style.backgroundImage = `url("/assets/images/home_background/Photo HP${ranNum}.jpg")`;
+            img.style.backgroundImage = `url("https://api.daze-mgmt.com${page.home_images[ranNum]?.url }")`;
           }
         })
         .to(img, 0.5, {
-          autoAlpha: 1
-          // delay: 0.5
+          autoAlpha: 1,
+          // delay: 1
         })
         .to(
           img,
@@ -341,13 +372,13 @@ console.log("image",page.home_images)
           left: setRanPosition(index).x + "vw",
           top: setRanPosition(index).y + "vh",
           onComplete: () => {
-            let ranNum = Math.round(Math.random() * 20);
+            let ranNum = Math.round(Math.random() *  page.home_images.length);
             while (imgIndex.findIndex(item => item === ranNum) !== -1) {
-              ranNum = Math.round(Math.random() * 20);
+              ranNum = Math.round(Math.random() *  page.home_images.length);
             }
             imgIndex[index] = ranNum;
             // setImgIndex(indexArray);
-            img.style.backgroundImage = `url("/assets/images/home_background/Photo HP${ranNum}.jpg")`;
+             img.style.backgroundImage = `url("https://api.daze-mgmt.com${page.home_images[ranNum]?.url }")`;
           }
         })
         .to(img, 0.5, {
@@ -553,6 +584,9 @@ console.log("image",page.home_images)
       <LogoContainer id="LogoContainerHome">
         <img src="/assets/svg/daze-icon.svg" alt="" />
         {/* <p>Data</p> */}
+        <p className="imgdowntext">
+          <ReactMarkdown source={lang === 'en' ? page.home_title_en : page.home_title_fr} />
+          </p>
       </LogoContainer>
       <ScrollWrapper id="scroll-line">
         <p>scroll down</p>

@@ -131,6 +131,10 @@ const Title = styled.div`
     letter-spacing: 8px;
     line-height: 75px;
   }
+  & h2.booked{
+    font-family: "SVN-Miller Banner";
+    font-size: 71.2252px;
+  }
   & h2.italic {
     font-size: 65px;
     letter-spacing: 3px;
@@ -143,18 +147,28 @@ const Title = styled.div`
     & h2 {
       margin-left: 0 !important;
     }
-    & h2.book,
+    & h2.book{
+      font-size: 27.92px;
+    line-height: 38px;
+    font-family: "SVN-Miller Banner";
+    font-style: italic;
+    letter-spacing: 0px;
+    }
+    & h2.booked{
+      font-size: 26px ;
+    }
     h2.stand-book {
-      font-family: "Bodoni-Book";
+      font-family: "SVN-Miller Banner";
       font-size: 35px;
       letter-spacing: 8px;
       line-height: 1;
     }
     & h2.italic {
-      font-size: 35px;
-      letter-spacing: 5px;
-      line-height: 1.5;
-      font-family: "Bodoni-BookIta";
+      font-size: 27.92px;
+      line-height: 27px;
+      letter-spacing: 0px;
+      font-style: italic;
+      font-family: "SVN-Miller Banner";
     }
     & h2.stand-italic {
       font-size: 35px;

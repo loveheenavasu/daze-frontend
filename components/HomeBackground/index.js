@@ -41,6 +41,16 @@ const Wrapper = styled.div`
     opacity:0.534 !important;
   }
 
+  @media(max-width:425px){
+
+    & .bg-img-5 {
+      opacity: 0.7 !important;
+    }
+    & .bg-img-1 {
+      opacity:0.7 !important;
+    }
+  }
+
   /* & .bg-img-1 {
     left: 20vw;
     top: -18vh;
@@ -146,13 +156,14 @@ const LogoContainer = styled.div`
     color: #000;
     text-align:center;
     left: 37%;
-    top:58%;
+    top:54%;
   }
 
   @media (max-width: 425px) {
     .imgdowntext{
       width: 205px;
       left: 25%;
+      top: 54%;
     }
   }
 `;

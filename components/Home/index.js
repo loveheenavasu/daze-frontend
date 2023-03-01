@@ -41,9 +41,30 @@ const Wrapper = styled.div`
   @media (max-width: 960px) {
     margin-top: 100vh;
   }
-CookieConsent {
-    buttonStyle{
-      background-color :#fff;
+//  .CookieConsent {
+//       background: #000 !important;
+//       & > div:nth-child(1) {
+//         flex: unset !important;
+//         margin: 0 !important;
+//         width: 200px !important;
+//       }
+//   }
+  @media(max-width: 425px){
+    .CookieConsent {
+     padding:10px 16px;
+      align-items:center !important;
+      & > div:nth-child(1) {
+        flex: unset !important;
+        margin: 0 !important;
+        width: 200px !important;
+      }
+  }
+
+    #rcc-confirm-button{
+      margin-right:35px !important;
+      margin-left:0px !important;
+      margin-bottom:0px !important;
+      margin-top:0px !important;
     }
   }
 `;
@@ -905,8 +926,9 @@ const standText = (lang === 'fr' ? page.stand_out_crowd_title_fr : page.stand_ou
       </div>
       <CookieConsent
       buttonStyle={{ background: '#fff', marginRight: '25px', padding: '8px 20px'}}
-      style={{ background: 'black' }}
+      style={{ background: 'black'}}
       buttonText="I Accept"
+      className="CookieConsent"
       >
         <span style={{ color: 'white'}}>
           This website uses cookies to enhance the user experience.

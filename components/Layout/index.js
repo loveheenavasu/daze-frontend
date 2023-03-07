@@ -35,7 +35,7 @@ const ScrollTopButton = styled.div`
   pointer-events: ${({ display }) => (display ? "auto" : "none")};
   height: 50px;
   position: fixed;
-  bottom: 50px;
+  bottom: 70px;
   right: 100px;
   background-size: cover;
   background-position: center;

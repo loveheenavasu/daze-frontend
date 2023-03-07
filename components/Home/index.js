@@ -41,6 +41,11 @@ const Wrapper = styled.div`
   @media (max-width: 960px) {
     margin-top: 100vh;
   }
+
+  .CookieConsent-buttonWrapper-reversed {
+    display: flex;
+    flex-direction: row-reverse;
+  }
 //  .CookieConsent {
 //       background: #000 !important;
 //       & > div:nth-child(1) {
@@ -61,10 +66,10 @@ const Wrapper = styled.div`
   }
 
     #rcc-confirm-button{
-      margin-right:35px !important;
-      margin-left:0px !important;
-      margin-bottom:0px !important;
-      margin-top:0px !important;
+      margin-right: 2px !important;
+      margin-left: 0px !important;
+      margin-bottom: 15px !important;
+      margin-top: 15px !important;
     }
   }
 `;
@@ -939,11 +944,17 @@ const standText = (lang === 'fr' ? page.stand_out_crowd_title_fr : page.stand_ou
         </Container>
       </div>
       <CookieConsent
-      buttonStyle={{ background: '#fff', marginRight: '25px', padding: '8px 20px'}}
-      style={{ background: 'black'}}
-      buttonText="I Accept"
+      buttonStyle={{ background: '#fff', marginRight: '10px', padding: '8px 20px' }}
+      style={{ background: 'black' }}
+      enableDeclineButton
+      onDecline={() => { console.log('Cookies declined'); }}
+      declineButtonText="Decline" 
       className="CookieConsent"
-      >
+      declineButtonStyle={{ background: '#000', marginRight: '20px',color: '#fff', padding: '8px 20px' , border:"1px solid #fff"}}
+      buttonText="Accept"
+      buttonWrapperClasses="CookieConsent-buttonWrapper-reversed"
+   
+    >
         <span style={{ color: 'white'}}>
           This website uses cookies to enhance the user experience.
         </span>

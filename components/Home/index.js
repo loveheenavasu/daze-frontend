@@ -57,6 +57,7 @@ const Wrapper = styled.div`
   @media(max-width: 424px){
     .CookieConsent {
      padding:10px 5px;
+     font-size:13px !important;
       align-items:center !important;
       & > div:nth-child(1) {
         flex: unset !important;

@@ -51,23 +51,26 @@ const Wrapper = styled.div`
 //       & > div:nth-child(1) {
 //         flex: unset !important;
 //         margin: 0 !important;
-//         width: 200px !important;
+//         width: 46% !important;
 //       }
 //   }
-  @media(max-width: 425px){
+  @media(max-width: 424px){
     .CookieConsent {
-     padding:10px 16px;
+     padding:10px 5px;
       align-items:center !important;
       & > div:nth-child(1) {
         flex: unset !important;
         margin: 0 !important;
-        width: 200px !important;
+        width: 185px !important;
+      }
+      .CookieConsent-buttonWrapper-reversed {
+        width:49%
       }
   }
 
 
     #rcc-confirm-button{
-      margin-right: 2px !important;
+      margin-right: 1px !important;
       margin-left: 0px !important;
       margin-bottom: 15px !important;
       margin-top: 15px !important;
@@ -76,7 +79,8 @@ const Wrapper = styled.div`
 
     #rcc-decline-button {
       padding:11px 9px !important;
-      margin-right:30px !important;
+      margin-right:15px !important;
+      magin-left:5px !important;
     }
   
   }
@@ -93,7 +97,37 @@ const Wrapper = styled.div`
         margin-right:0px !important;
         margin-left:5px !important;
       }
-  }
+    }
+    @media(max-width: 425px){
+      .CookieConsent {
+       padding:10px 5px;
+        align-items:center !important;
+        & > div:nth-child(1) {
+          flex: unset !important;
+          margin: 0 !important;
+          width: 185px !important;
+        }
+        .CookieConsent-buttonWrapper-reversed {
+          width:49%
+        }
+    }
+  
+  
+      #rcc-confirm-button{
+        margin-right: 1px !important;
+        margin-left: 0px !important;
+        margin-bottom: 15px !important;
+        margin-top: 15px !important;
+        padding:11px 9px !important;
+      }
+  
+      #rcc-decline-button {
+        padding:11px 9px !important;
+        margin-right:15px !important;
+        magin-left:5px !important;
+      }
+    
+    }
 `;
 
 // CookieConsent {

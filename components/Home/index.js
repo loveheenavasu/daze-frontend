@@ -65,12 +65,34 @@ const Wrapper = styled.div`
       }
   }
 
+
     #rcc-confirm-button{
       margin-right: 2px !important;
       margin-left: 0px !important;
       margin-bottom: 15px !important;
       margin-top: 15px !important;
+      padding:11px 9px !important;
     }
+
+    #rcc-decline-button {
+      padding:11px 9px !important;
+      margin-right:30px !important;
+    }
+  
+  }
+  @media(max-width: 375px){
+    .CookieConsent {
+     padding:10px 0px;
+      & > div:nth-child(1) {
+        width: 184px !important;
+      }
+      .CookieConsent-buttonWrapper-reversed {
+        width:100px;
+      }
+      #rcc-decline-button {
+        margin-right:0px !important;
+        margin-left:5px !important;
+      }
   }
 `;
 
@@ -944,14 +966,26 @@ const standText = (lang === 'fr' ? page.stand_out_crowd_title_fr : page.stand_ou
         </Container>
       </div>
       <CookieConsent
-      buttonStyle={{ background: '#fff', marginRight: '10px', padding: '8px 20px' }}
+      buttonStyle={{ background: '#fff', marginRight: '10px', padding: '8px 20px',
+      fontFamily: 'Sackers Gothic Std',
+      fontStyle: 'normal',
+      fontWeight: 850,
+      fontSize: '12px',
+      lineHeight: '14px'
+    }}
       style={{ background: 'black' }}
       enableDeclineButton
       onDecline={() => { console.log('Cookies declined'); }}
-      declineButtonText="Decline" 
+      declineButtonText="DECLINE" 
       className="CookieConsent"
-      declineButtonStyle={{ background: '#000', marginRight: '20px',color: '#fff', padding: '8px 20px' , border:"1px solid #fff"}}
-      buttonText="Accept"
+      declineButtonStyle={{ background: '#000', marginRight: '20px',color: '#fff', padding: '8px 20px' , border:"1px solid #fff",
+      fontFamily: 'Sackers Gothic Std',
+      fontStyle: 'normal',
+      fontWeight: 850,
+      fontSize: '12px',
+      lineHeight: '14px'
+    }}
+      buttonText="ACCEPT"
       buttonWrapperClasses="CookieConsent-buttonWrapper-reversed"
    
     >

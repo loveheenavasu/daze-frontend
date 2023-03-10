@@ -38,22 +38,35 @@ const Wrapper = styled.div`
   & .scroll-line {
     width: 2px;
   }
+  .CookieConsent {
+    align-items:center !important;
+    & > div:nth-child(1) {
+     flex: unset !important;
+     width:100%;
+     text-align:center;
+     margin:0px !important;
+    }
+  }
+    .CookieConsent-buttonWrapper-reversed {
+     width:0px;
+    }
   @media (max-width: 960px) {
     margin-top: 100vh;
   }
 
-  .CookieConsent-buttonWrapper-reversed {
+  & .CookieConsent-buttonWrapper-reversed {
     display: flex;
     flex-direction: row-reverse;
   }
-//  .CookieConsent {
-//       background: #000 !important;
-//       & > div:nth-child(1) {
-//         flex: unset !important;
-//         margin: 0 !important;
-//         width: 46% !important;
-//       }
-//   }
+
+
+@media(max-width:425px){
+  .CookieConsent {
+    align-items:center !important;
+    & > div:nth-child(1) {
+      width:100px
+    }
+}
   @media(max-width: 424px){
     .CookieConsent {
      padding:10px 5px;
@@ -972,19 +985,19 @@ const standText = (lang === 'fr' ? page.stand_out_crowd_title_fr : page.stand_ou
         </Container>
       </div>
       <CookieConsent
-      buttonStyle={{ background: '#fff', marginRight: '10px', padding: '8px 20px',
+      buttonStyle={{ background: '#fff', marginRight: '10px', padding: '10px 17px',
       fontFamily: 'Sackers Gothic Std',
       fontStyle: 'normal',
       fontWeight: 850,
       fontSize: '12px',
       lineHeight: '14px'
     }}
-      style={{ background: 'black' }}
+      style={{ background: 'black'}}
       enableDeclineButton
       onDecline={() => { console.log('Cookies declined'); }}
       declineButtonText="DECLINE" 
       className="CookieConsent"
-      declineButtonStyle={{ background: '#000', marginRight: '20px',color: '#fff', padding: '8px 20px' , border:"1px solid #fff",
+      declineButtonStyle={{ background: '#000', marginRight: '20px',color: '#fff', padding: '10px 14px' , border:"1px solid #fff",
       fontFamily: 'Sackers Gothic Std',
       fontStyle: 'normal',
       fontWeight: 850,

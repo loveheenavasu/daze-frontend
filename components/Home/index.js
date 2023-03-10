@@ -88,11 +88,11 @@ const Wrapper = styled.div`
       margin-left: 0px !important;
       margin-bottom: 15px !important;
       margin-top: 15px !important;
-      padding:11px 9px !important;
+      padding:13px 9px !important;
     }
 
     #rcc-decline-button {
-      padding:11px 9px !important;
+      padding:13px 9px !important;
       margin-right:15px !important;
       magin-left:5px !important;
     }
@@ -985,12 +985,14 @@ const standText = (lang === 'fr' ? page.stand_out_crowd_title_fr : page.stand_ou
         </Container>
       </div>
       <CookieConsent
-      buttonStyle={{ background: '#fff', marginRight: '10px', padding: '10px 17px',
+      buttonStyle={{ background: '#fff', marginRight: '10px', padding: '12px 17px 10px 17px',
+      display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
       fontFamily: 'Sackers Gothic Std',
       fontStyle: 'normal',
       fontWeight: 850,
       fontSize: '12px',
-      lineHeight: '14px'
     }}
       style={{ background: 'black'}}
       enableDeclineButton
@@ -998,11 +1000,14 @@ const standText = (lang === 'fr' ? page.stand_out_crowd_title_fr : page.stand_ou
       declineButtonText="DECLINE" 
       className="CookieConsent"
       declineButtonStyle={{ background: '#000', marginRight: '20px',color: '#fff', padding: '10px 14px' , border:"1px solid #fff",
+      padding: '12px 17px 10px 17px',
+      display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
       fontFamily: 'Sackers Gothic Std',
       fontStyle: 'normal',
       fontWeight: 850,
       fontSize: '12px',
-      lineHeight: '14px'
     }}
       buttonText="ACCEPT"
       buttonWrapperClasses="CookieConsent-buttonWrapper-reversed"

@@ -88,11 +88,11 @@ const Wrapper = styled.div`
       margin-left: 0px !important;
       margin-bottom: 15px !important;
       margin-top: 15px !important;
-      padding:13px 9px !important;
+      padding:13px 9px 11px 9px !important; 
     }
 
     #rcc-decline-button {
-      padding:13px 9px !important;
+      padding:13px 9px 11px 9px !important;
       margin-right:15px !important;
       magin-left:5px !important;
     }

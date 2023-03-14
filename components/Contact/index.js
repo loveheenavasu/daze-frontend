@@ -141,7 +141,9 @@ const FormWrapper = styled.div`
 
 const ContactPage = (props) => {
   const router = useRouter();
-  const { lang } = props;
+  const { lang,contactApiData } = props;
+
+  console.log("contactApiData",contactApiData)
   // useEffect(() => {
   //   console.log("subject", lang, translations[lang]);
   // }, []);
@@ -160,17 +162,21 @@ const ContactPage = (props) => {
         <center>
           <Title2>The Team</Title2>
           <TeamWrapper>
+            {contactApiData.map((data)=>{
+              return(
             <TeamContact>
-              <h3>lola de la villéjegu</h3>
-              <p>Director</p>
+              <h3>{lang === 'en' ? data.Name : data.Name_fr}</h3>
+              <p>{lang === 'en' ? data.Designation : data.Designation_fr}</p>
               <p>
-                <span>(Dior, Louis Vuitton, Lunched Bumble in France)</span>
+                <span>{lang === 'en' ?  data.Tags: data_fr}</span>
               </p>
-              <a href="mailto:lola@daze-mgmt.com">
+              <a href={`mailto:${data.Email}`}>
                 <ButtonContact>contact</ButtonContact>
               </a>
             </TeamContact>
-            <TeamContact>
+            )
+          })}
+            {/* <TeamContact>
               <h3>alice de labriffe</h3>
               <p>Project & Talents Manager</p>
               <p>
@@ -221,7 +227,7 @@ const ContactPage = (props) => {
               <a href="mailto:julecomar@me.com">
                 <ButtonContact>contact</ButtonContact>
               </a>
-            </TeamContact>
+            </TeamContact> */}
           </TeamWrapper>
         </center>
       </Wrapper>

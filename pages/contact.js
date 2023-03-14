@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import dynamic from "next/dynamic";
 import ContactPage from "../components/Contact";
 import { useRouter } from "next/router";
+import getConfig from "next/config";
+const { publicRuntimeConfig } = getConfig();
 
 const Layout = dynamic(() => import("../components/Layout"), { ssr: false });
 
-const Contact = ({ lang, setLang }) => {
+const Contact = ({ lang, setLang,contactApiData }) => {
   const router = useRouter();
   return (
     <Layout
@@ -16,9 +18,17 @@ Nous nous tenons bien évidemment à votre entière disposition pour évoquer pl
       lang={lang}
       setLang={setLang}
     >
-      <ContactPage lang={lang} subject={router.query.subject}></ContactPage>
+      <ContactPage lang={lang} subject={router.query.subject} contactApiData={contactApiData}></ContactPage>
     </Layout>
   );
+};
+
+Contact.getInitialProps = async (ctx) => {
+  const contactData = await fetch(`${publicRuntimeConfig.API_URL}/contact-team-members`);
+
+  return {
+    contactApiData: await contactData.json(),
+  };
 };
 
 export default Contact;
